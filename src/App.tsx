@@ -4,6 +4,9 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
+import { CommingSoon } from "./pages/commingSoon";
+import { Home } from "./pages/home";
+import NotFound from "./pages/notfound";
 
 
 
@@ -18,36 +21,12 @@ function App() {
       element: <NotFound />,
     },
     {
-      path: "/signin",
-      element: <Signin />,
-    },
-    {
-      path: "/signup",
-      element: <Signup />,
-    },
-    {
       path: "/",
       element: <Navigate to="/home" replace />,
     },
     {
       path: "/home",
       element: <Home />,
-    },
-    {
-      path: "/booking",
-      element: <Booking />,
-    },
-    {
-      path: "/pricing",
-      element: <Pricing />,
-    },
-    {
-      path: "/profile",
-      element: <Profile />,
-    },
-    {
-      path: "/support",
-      element: <Support />,
     },
     {
       path: "/comingsoon",
