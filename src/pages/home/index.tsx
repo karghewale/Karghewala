@@ -1,8 +1,13 @@
+import { Footer } from "../../components/footer";
+import { Navbar } from "../../components/navbar";
 
-type Props = {}
+type Props = {};
 
 export const Home = (_props: Props) => {
   return (
-    <div>Home</div>
-  )
-}
+    <div>
+      <Navbar />
+      <Footer />
+    </div>
+  );
+};
