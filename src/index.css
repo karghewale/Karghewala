@@ -1,6 +1,6 @@
 :root {
+  src: local("MyFont"), url("./fonts/AVGARDN_2.TTF") format("woff");
   font-family: "MyFont";
-  src: local("MyFont"), url("./fonts/bella.regular.ttf") format("woff");
   line-height: 1.5;
   font-weight: 400;
 
@@ -14,17 +14,17 @@
 }
 
 @font-face {
-  font-family: "Bella";
-  src: local("BellaRegular"),
-    url("./fonts/bella.regular.ttf") format("truetype");
-  font-weight: 100;
+  font-family: "AVGARDDbold";
+  src: local("AVGARDDbold"),
+    url("./fonts/AVGARDD_2.TTF") format("truetype");
+  font-weight: 500;
 }
 @font-face {
-  font-family: "Gilroy";
-  src: local("GilroyRegular"), url("./fonts/Gilroy-Bold.ttf") format("truetype");
-  font-weight: 100;
+  font-family: "AVGARDDnormal";
+  src: local("AVGARDDnormal"),
+    url("./fonts/AVGARDN_2.TTF") format("truetype");
+  font-weight: 500;
 }
-
 * {
   margin: 0;
   padding: 0;

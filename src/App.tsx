@@ -16,6 +16,8 @@ import { Alumini } from "./pages/alumini";
 import { Login } from "./pages/admin/login";
 import { Dashboard } from "./pages/admin/dashboard";
 import PrivateRoutes from "./services/privateRoute";
+import { useEffect } from "react";
+import { Layout } from "./pages/layout";
 
 function App() {
   const router = createBrowserRouter([
@@ -29,24 +31,31 @@ function App() {
     },
     {
       path: "/",
-      element: <Navigate to="/home" replace />,
+      element: <Layout />,
+      children: [
+        {
+          path: "/",
+          element: <Navigate to="/home" replace />,
+        },
+        {
+          path: "/home",
+          element: <Home />,
+        },
+        {
+          path: "/story",
+          element: <Story />,
+        },
+        {
+          path: "/training",
+          element: <Training />,
+        },
+        {
+          path: "/contact",
+          element: <Contact />,
+        },
+      ],
     },
-    {
-      path: "/home",
-      element: <Home />,
-    },
-    {
-      path: "/training",
-      element: <Training />,
-    },
-    {
-      path: "/story",
-      element: <Story />,
-    },
-    {
-      path: "/contact",
-      element: <Contact />,
-    },
+
     {
       path: "/gallery",
       element: <Gallery />,
@@ -73,6 +82,13 @@ function App() {
       element: <PrivateRoutes children={<Dashboard />} />,
     },
   ]);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty("--color-primary", "#FDB5C0");
+    document.documentElement.style.setProperty("--color-secondary", "#790416");
+    document.documentElement.style.setProperty("--color-teritary", "#FEE6E9");
+  }, []);
+
   return <RouterProvider router={router} />;
 }
 

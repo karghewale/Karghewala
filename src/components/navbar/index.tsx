@@ -13,7 +13,7 @@ export const Navbar = (_props: Props) => {
   function openMenu() {
     setopenmenu(!openmenu);
   }
-  const navContent = ["HOME", "WORKS", "SERVICES", "ABOUT"];
+  const navContent = ["STORY", "TRAINING", "CONTACT"];
   const changeNavBg = () => {
     window.scrollY >= 100 ? setNavBg(true) : setNavBg(false);
   };
@@ -59,17 +59,14 @@ export const Navbar = (_props: Props) => {
           {navContent.map((content, i) => (
             <button
               key={i}
-              onClick={() => renderLinks(`/${content.toLowerCase()}`)}
+              onClick={() => renderLinks(`${content.toLowerCase()}`)}
+              className={
+                window.location.pathname.includes(content.toLowerCase())
+                  ? styles.activeLink
+                  : styles.link
+              }
             >
-              <p
-                className={
-                  window.location.pathname.includes(content.toLowerCase())
-                    ? styles.activeLink
-                    : styles.link
-                }
-              >
-                {content}
-              </p>
+              {content}
             </button>
           ))}
         </div>
@@ -86,28 +83,33 @@ export const Navbar = (_props: Props) => {
             {navContent.map((content, i) => (
               <button
                 key={i}
-                onClick={() => renderLinks(`/${content.toLowerCase()}`)}
+                onClick={() => renderLinks(`${content.toLowerCase()}`)}
+                className={
+                  window.location.pathname.includes(content.toLowerCase())
+                    ? styles.activeLink
+                    : styles.link
+                }
               >
-                <p
-                  className={
-                    window.location.pathname.includes(content.toLowerCase())
-                      ? styles.activeLink
-                      : styles.link
-                  }
-                >
-                  {content}
-                </p>
+                {content}
               </button>
             ))}
-            <button className={styles.StudyButton} onClick={scrollToContact}>
-              CONTACT
-            </button>
+            <ButtonDonate onClick={scrollToContact} />
           </div>
         )}
       </div>{" "}
-      <button className={styles.StudyButton} onClick={scrollToContact}>
-        CONTACT
-      </button>
+      <ButtonDonate onClick={scrollToContact} />
     </div>
+  );
+};
+
+interface ButtonDonateProps {
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+const ButtonDonate = ({ onClick }: ButtonDonateProps) => {
+  return (
+    <button className={styles.StudyButton} onClick={onClick}>
+      DONATE
+    </button>
   );
 };
