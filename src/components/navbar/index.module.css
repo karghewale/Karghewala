@@ -1,5 +1,5 @@
 .navbarWrapper {
-  position: fixed;
+  position: sticky;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -8,7 +8,8 @@
   z-index: 9990;
   backdrop-filter: blur(8px);
   top: 0;
-  font-family: "Bella";
+  min-height: 80px;
+  background-color: white;
 }
 .navbarWrapper > div {
   width: fit-content;
@@ -28,16 +29,14 @@
   z-index: 9999;
 }
 
-.navbarRight > div {
-  display: flex;
-  gap: 4vw;
-}
-.navbarRight > div > a > p {
-  text-transform: capitalize;
-}
-.navbarRight {
+.navbarRight{
   display: flex;
   align-items: center;
+  gap: 4vw;
+}
+.navbarRight > button{
+  text-transform: capitalize;
+  font-size: 17px;
 }
 
 .navbarWrapper .StudyButton,
@@ -125,7 +124,7 @@
   .navbarLeft .logo {
     display: flex;
   }
-  .navbarLeft .hidden {
+  /* .navbarLeft .hidden {
     opacity: 0;
-  }
+  } */
 }

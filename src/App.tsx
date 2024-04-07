@@ -55,7 +55,6 @@ function App() {
         },
       ],
     },
-
     {
       path: "/gallery",
       element: <Gallery />,
@@ -72,7 +71,6 @@ function App() {
       path: "/comingsoon",
       element: <CommingSoon />,
     },
-
     {
       path: "/admin",
       element: <Login />,

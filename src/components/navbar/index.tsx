@@ -10,6 +10,41 @@ export const Navbar = (_props: Props) => {
   const [openmenu, setopenmenu] = useState(false);
   const [navbg, setNavBg] = useState(false);
   const navigate = useNavigate();
+     const [lastScrollY, setLastScrollY] = useState(window.scrollY);
+     const [navStyle, setNavStyle] = useState({});
+
+     useEffect(() => {
+       const handleScroll = () => {
+         const currentScrollY = window.scrollY;
+
+         if (currentScrollY < lastScrollY) {
+           // Scrolling up
+           setNavStyle({
+             position: "sticky",
+             top: 0,
+             width: "100%",
+           });
+         } else {
+           setNavStyle({
+             position: "static",
+           });
+         }
+
+         if (window.scrollY == 0) {
+           setNavStyle({
+             position: "sticky",
+             top: 0,
+           });
+         }
+         setLastScrollY(currentScrollY);
+       };
+
+       window.addEventListener("scroll", handleScroll, { passive: true });
+
+       return () => {
+         window.removeEventListener("scroll", handleScroll);
+       };
+     }, [lastScrollY]);
   function openMenu() {
     setopenmenu(!openmenu);
   }
@@ -39,14 +74,9 @@ export const Navbar = (_props: Props) => {
   };
 
   return (
-    <div
-      className={styles.navbarWrapper}
-      style={{
-        background: navbg ? "rgba(255,255,255,1)" : "rgba(255,255,255,1)",
-      }}
-    >
+    <div className={styles.navbarWrapper} style={navStyle}>
       <div className={styles.navbarLeft}>
-        <button onClick={() => navigate("/home")}>
+        <button onClick={() => navigate("/")}>
           <img
             className={`${styles.logo} ${navbg ? " " : styles.hidden}`}
             src={logo}
@@ -55,21 +85,19 @@ export const Navbar = (_props: Props) => {
         </button>
       </div>
       <div className={styles.navbarRight}>
-        <div>
-          {navContent.map((content, i) => (
-            <button
-              key={i}
-              onClick={() => renderLinks(`${content.toLowerCase()}`)}
-              className={
-                window.location.pathname.includes(content.toLowerCase())
-                  ? styles.activeLink
-                  : styles.link
-              }
-            >
-              {content}
-            </button>
-          ))}
-        </div>
+        {navContent.map((content, i) => (
+          <button
+            key={i}
+            onClick={() => renderLinks(`${content.toLowerCase()}`)}
+            className={
+              window.location.pathname.includes(content.toLowerCase())
+                ? styles.activeLink
+                : styles.link
+            }
+          >
+            {content}
+          </button>
+        ))}
       </div>
       <div className={styles.navbarMobile}>
         <button className={styles.menuMd} onClick={openMenu}>
