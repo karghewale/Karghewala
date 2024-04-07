@@ -1,5 +1,8 @@
-import styles from './index.module.css'
-type Props = {}
+import styles from "./index.module.css";
+import component from "/assets/sidePlacedComponent.png";
+import gif from './gifset.png'
+import gif2 from "./gif2.png";
+type Props = {};
 
 export const About = (_props: Props) => {
   return (
@@ -21,6 +24,8 @@ export const About = (_props: Props) => {
           the creative agency of weaver artisans.
         </p>
       </div>{" "}
+      <img className={styles.gif} src={gif} alt="" />
+      <img className={styles.gif2} src={gif2} alt="" />
       <div>
         <h2>The SOLUTION</h2>
         <p>
@@ -31,6 +36,7 @@ export const About = (_props: Props) => {
           establish their own distinct design and brand identity.
         </p>
       </div>
+      <img className={styles.component} src={component} alt="" />
     </div>
   );
-}
+};

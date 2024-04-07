@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 3vh;
   padding: 6vh 10vw;
+  align-items: center;
 }
 .Wrapper > div {
   display: flex;
@@ -19,6 +20,27 @@
 .Wrapper p {
   font-size: 1.2em;
   line-height: 1.2;
+  max-width: 1300px;
+}
+.Wrapper .gif{
+    width: 100%;
+}.Wrapper .gif2{
+    width: 100%;
+    display: none;
+}
+.Wrapper .component{
+    position: absolute;
+    right: 0;
+    height: 50vh;
+}
+
+@media screen and (max-width: 600px) {
+  .Wrapper .gif{
+    display: none;
+
+}.Wrapper .gif2{
+  display: block;
+}
 }
 
 @media screen and (max-width: 500px) {
