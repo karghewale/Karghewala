@@ -21,26 +21,28 @@
   font-size: 1.2em;
   line-height: 1.2;
   max-width: 1300px;
+  font-family: "Lato";
 }
-.Wrapper .gif{
-    width: 100%;
-}.Wrapper .gif2{
-    width: 100%;
-    display: none;
+.Wrapper .gif {
+  width: 100%;
 }
-.Wrapper .component{
-    position: absolute;
-    right: 0;
-    height: 50vh;
+.Wrapper .gif2 {
+  width: 100%;
+  display: none;
+}
+.Wrapper .component {
+  position: absolute;
+  right: 0;
+  height: 50vh;
 }
 
 @media screen and (max-width: 600px) {
-  .Wrapper .gif{
+  .Wrapper .gif {
     display: none;
-
-}.Wrapper .gif2{
-  display: block;
-}
+  }
+  .Wrapper .gif2 {
+    display: block;
+  }
 }
 
 @media screen and (max-width: 500px) {
