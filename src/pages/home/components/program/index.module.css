@@ -1,0 +1,38 @@
+.Wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+  padding: 0vh 10vw 6vh;
+  align-items: center;
+  position: relative;
+
+}
+.Wrapper h2 {
+  color: var(--Secondary, #790416);
+  font-family: "AVGARDDbold";
+  font-size: 2em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.Wrapper .inhouse{
+    width: 100%;
+    min-height: 50vh;
+    object-fit: cover;
+}
+
+.Wrapper .component {
+  position: absolute;
+  right: 0;
+  top: -10vh;
+  height: 40vh;
+  transform: scaleX(1);
+  transform: scaleY(-1);
+}
+.Wrapper .component2 {
+  position: absolute;
+  left: 0;
+  bottom: -12vh;
+  height: 40vh;
+  transform: scale(-1);
+}

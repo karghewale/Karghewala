@@ -15,7 +15,7 @@ type Props = {
   symbol1?: string;
 };
 
-export const Impact = (_props: Props) => {
+export const Impact = () => {
   const data = [
     {
       svg: <Fabric />,
