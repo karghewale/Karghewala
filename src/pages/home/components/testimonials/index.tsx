@@ -1,5 +1,5 @@
 import styles from "./index.module.css";
-import { Swiper, SwiperSlide,SwiperRef } from "swiper/react";
+import { Swiper, SwiperSlide, SwiperRef } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
@@ -72,10 +72,11 @@ export const Testimonial = (_props: Props) => {
           >
             {testimonials.map((testimonial, index) => (
               <SwiperSlide key={index} className={styles.swiperSlider}>
-                <div>
+                <div className={styles.testimonial}>
+                  {" "}
+                  <img className={styles.slash} src={slash} alt="" />
                   <h3>{testimonial.quote}</h3>
                   <div>
-                    <img src={slash} alt="" />
                     <p>
                       <h2>{testimonial.name}</h2>,{testimonial.age}
                     </p>
@@ -83,9 +84,13 @@ export const Testimonial = (_props: Props) => {
                     <p>Avg. sale rate ₹ {testimonial.avgsale}/month</p>
                   </div>
                 </div>
-                <div>
-                  <img src={fav} alt="" />
-                  <img src={testimonial.imageSrc} alt="" />
+                <div className={styles.ImageContainer}>
+                  <img className={styles.fav} src={fav} alt="" />
+                  <img
+                    className={styles.image}
+                    src={testimonial.imageSrc}
+                    alt=""
+                  />
                 </div>
               </SwiperSlide>
             ))}{" "}

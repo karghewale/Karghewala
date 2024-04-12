@@ -22,19 +22,38 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #FFFFFF;
+  color: #ffffff;
   background-color: #790416;
   font-size: 17px !important;
   font-weight: 600;
   flex-shrink: 0;
   position: absolute;
   top: 0;
-z-index: 999;
+  z-index: 999;
 }
-.swiper-button-next:after{
-  right: -8vw;
+.swiper-button-next:after {
+  right: -2vw;
 }
 
 .swiper-button-prev:after {
-  left: -8vw;
+  left: -2vw;
+}
+
+@media screen and (max-width: 900px) {
+  .swiper-button-next:after {
+    right: -8vw;
+  }
+
+  .swiper-button-prev:after {
+    left: -8vw;
+  }
+}
+@media screen and (max-width: 700px) {
+  .swiper-button-next:after {
+    right: -10vw;
+  }
+
+  .swiper-button-prev:after {
+    left: -10vw;
+  }
 }
