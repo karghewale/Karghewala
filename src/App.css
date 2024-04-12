@@ -14,3 +14,27 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  height: 50px !important;
+  width: 50px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  background-color: #790416;
+  font-size: 17px !important;
+  font-weight: 600;
+  flex-shrink: 0;
+  position: absolute;
+  top: 0;
+z-index: 999;
+}
+.swiper-button-next:after{
+  right: -8vw;
+}
+
+.swiper-button-prev:after {
+  left: -8vw;
+}
