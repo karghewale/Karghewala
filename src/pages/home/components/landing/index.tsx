@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import styles from "./index.module.css";
-
+import bg from "./bg.png";
 type Props = {};
 
 
@@ -67,33 +67,32 @@ export const Landing = (_props: Props) => {
   return (
     <div className={styles.Wrapper}>
       <div>
-        <h1>the STORY of </h1>
-        <h1 className={styles.consoleContainer}>
-          <span id="text"></span>
-          <div className={styles.consoleUnderscore} id="console">
-            &#95;
-          </div>
-        </h1>
+        {" "}
+        <div>
+          <h1>The Story Of </h1>
+          <h1 className={styles.consoleContainer}>
+            <span id="text"></span>
+            <div className={styles.consoleUnderscore} id="console">
+              &#95;
+            </div>
+          </h1>
+        </div>
+        <p>
+          This talented community of young and aspiring weaver entrepreneurs, so
+          that they can{" "}
+          <span className="colorText">build robust businesses</span>. What
+          differentiates us is the belief that{" "}
+          <span className="colorText">
+            weavers are equal partners in the business
+          </span>
+          , not mere wage workers who will weave the said design and be paid per
+          meter wages. We believe in the agency of artisans to transcend
+          impediments in traditional value chains to co-create, manage business,
+          and sell the final products directly to the end consumer.
+        </p>
+     
       </div>
-      <p>
-        This talented community of young and aspiring weaver entrepreneurs, so
-        that they can <span className="colorText">build robust businesses</span>
-        . What differentiates us is the belief that{" "}
-        <span className="colorText">
-          weavers are equal partners in the business
-        </span>
-        , not mere wage workers who will weave the said design and be paid per
-        meter wages. We believe in the agency of artisans to transcend
-        impediments in traditional value chains to co-create, manage business,
-        and sell the final products directly to the end consumer.
-      </p>
-      <a href="#about" className={styles.homeButtonNav}>
-        <span className={[styles.m_scroll_arrows, styles.unu].join(" ")}></span>
-        <span className={[styles.m_scroll_arrows, styles.doi].join(" ")}></span>
-        <span
-          className={[styles.m_scroll_arrows, styles.trei].join(" ")}
-        ></span>
-      </a>
+      <img src={bg} alt="" />
     </div>
   );
 };

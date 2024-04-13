@@ -1,23 +1,39 @@
 .Wrapper {
   display: flex;
-  flex-direction: column;
-  background: url(./bg.png) center center/cover no-repeat;
+  flex-direction: row;
+  background: #790416;
   min-height: calc(100dvh - 80px);
   width: 100%;
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  padding: 6vh 10vw;
   gap: 2em;
 }
+.Wrapper > img {
+  width: 50%;
+  height: 100%;
+  min-height: calc(100dvh - 80px);
+  object-fit: cover;
+}
+.Wrapper > div {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 50%;
+  text-align: left;
+  padding: 0vh 0px 0px 8vw;
 
+}
 .Wrapper h1 {
   font-size: 4em;
   font-weight: 700;
-  text-align: center;
+  text-align: left;
   text-transform: uppercase;
   line-height: 1.1;
   font-family: "AVGARDDbold";
+}
+.Wrapper h1:nth-child(1) {
+  text-transform: none;
 }
 .Wrapper p {
   font-size: 1.2em;
@@ -33,62 +49,22 @@
   color: white;
 }
 
-.homeButtonNav {
-  background-color: transparent;
-  border: none;
-  position: absolute;
-  bottom: 5%;
-}
-
-.m_scroll_arrows {
-  display: block;
-  transform: rotate(45deg);
-  border-right: 3px dashed #ffffff;
-  border-bottom: 3px dashed #ffffff;
-  margin: 0 0 3px;
-  border-radius: 3px;
-  width: 30px;
-  height: 30px;
-}
-
-.unu,
-.doi,
-.trei,
-.quad {
-  animation: mouse-scroll 1s infinite alternate;
-  margin-top: -20px;
-}
-
-.unu {
-  animation-delay: 0.1s;
-}
-.doi {
-  animation-delay: 0.2s;
-}
-.trei {
-  animation-delay: 0.3s;
-}
-.quad {
-  animation-delay: 0.4s;
-}
-
-@keyframes mouse-scroll {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 @media screen and (max-width: 1200px) {
   .Wrapper h1 {
     font-size: 3em;
   }
   .Wrapper p {
     font-size: 1.1em;
+  }
+  .Wrapper {
+    flex-direction: column-reverse;
+  }
+  .Wrapper>div{
+    width: 100%;
+    padding: 3vh 10vw;
+  }
+  .Wrapper > img {
+    width: 100%;
+    min-height: 50dvh;
   }
 }

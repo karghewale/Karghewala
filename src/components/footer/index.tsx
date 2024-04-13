@@ -48,7 +48,9 @@ export const Footer = (_props: Props) => {
           <div>
             <div>
               <PhoneSvg />
-              <p>+91 95895 422173</p>
+              <a href="tel:+91 95895 42217">
+                <p>+91 95895 42217</p>
+              </a>
             </div>
             <div>
               <MailSvg />
@@ -57,8 +59,9 @@ export const Footer = (_props: Props) => {
             <div>
               <LocationSvg />
               <p>
-                Juna Bazar, Ram Mandir Marg, Gali no. 2, Ward no. 14, Maheshwar,
-                Dist.: Khargone, Madhya Pradesh 451224, India
+                Loomers India Private Limited Juna Bazar, Ram Mandir Marg, Gali
+                no. 2, Ward no. 14, Maheshwar, Dist.: Khargone, Madhya Pradesh
+                451224, India
               </p>
             </div>
           </div>
@@ -69,13 +72,15 @@ export const Footer = (_props: Props) => {
         <p>
           Copyright © 2024 Karghewale Foundation. All Rights Reserved | Design
           by&nbsp;
-          <a href="fundesign.in" target="_blank">Fun Designs</a>
+          <a href="fundesign.in" target="_blank">
+            Fun Designs
+          </a>
         </p>
         <div>
-          <a href="">
+          <a href="https://www.facebook.com/karghewale.connect" target="_blank">
             <Facebook />
           </a>
-          <a href="">
+          <a href="https://www.instagram.com/_karghewale?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
             <Instagram />
           </a>
           <a href="">
