@@ -1,0 +1,99 @@
+.Wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0px 10vw 3vh;
+  gap: 5vh;
+}
+
+.Footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-radius: 42.42px;
+  overflow-y: hidden;
+  background: linear-gradient(94deg, #7aec46 0%, #76d04d 60%);
+}
+
+
+.Content img {
+  width: 100%;
+}
+.Content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1600px;
+  gap: 25px;
+  width: 100%;
+padding: 0px 30px;
+}
+.Content > div {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 20px;
+  max-width: 320px;
+}
+.Content > div h3 {
+  color: #790416;
+}
+.Content > div p,
+.Content > div a {
+  color: black;
+}
+.Content > div > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+.Content > div > div > div {
+  display: flex;
+  gap: 10px;
+}
+.Content > div > div > div svg {
+  flex-shrink: 0;
+}
+.copyright {
+  display: flex;
+  width: 100%;
+
+  justify-content: space-between;
+  align-items: center;
+}
+.copyright > p > a {
+  color: #790416;
+  font-weight: bold;
+  cursor: pointer;
+  text-wrap: 0;
+}
+.copyright > div > a {
+  color: #555555;
+  font-weight: bold;
+  cursor: pointer;
+}
+.copyright > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+@media screen and (max-width: 1140px) {
+ 
+  .copyright{
+    flex-direction: column;
+    gap: 20px;
+    max-width: 500px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+
+    .copyright{
+  gap: 20px;
+  }
+}
