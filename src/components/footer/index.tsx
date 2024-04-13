@@ -6,7 +6,6 @@ import {
   LocationSvg,
   MailSvg,
   PhoneSvg,
-  Twitter,
   Youtube,
 } from "./svg";
 import Logo from "/Logo.jpg";
@@ -72,7 +71,7 @@ export const Footer = (_props: Props) => {
         <p>
           Copyright © 2024 Karghewale Foundation. All Rights Reserved | Design
           by&nbsp;
-          <a href="fundesign.in" target="_blank">
+          <a href="https://fundesign.in" target="_blank">
             Fun Designs
           </a>
         </p>
@@ -83,13 +82,16 @@ export const Footer = (_props: Props) => {
           <a href="https://www.instagram.com/_karghewale?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
             <Instagram />
           </a>
-          <a href="">
+          <a
+            href="https://www.youtube.com/channel/UCueRFZS0U1EP6l9n43RQiuQ"
+            target="_blank"
+          >
             <Youtube />
           </a>{" "}
-          <a href="">
-            <Twitter />
-          </a>{" "}
-          <a href="">
+          <a
+            href="https://www.linkedin.com/company/karghewale/"
+            target="_blank"
+          >
             <LinkedIn />
           </a>
         </div>

@@ -98,6 +98,8 @@
 }
 .navbarWrapper .activeLink {
   color: var(--color-secondary);
+  font-weight: 500;
+  font-family: "AVGARDDbold";
 }
 .navbarWrapper .link {
   color: #555555;

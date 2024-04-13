@@ -1,0 +1,62 @@
+.Wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: center;
+}
+.Wrapper h2 {
+  color: var(--Secondary, #790416);
+  font-family: "AVGARDDbold";
+  font-size: 2em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.ToperSection {
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+  background-color: #fff5f6;
+  padding: 3vh 0px;
+}
+
+.ToperSection .Mission {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 10vw;
+  align-items: center;
+  gap: 10px;
+}
+
+.ToperSection .Mission p {
+  font-size: 18px;
+  max-width: 1500px;
+}
+.Wrapper .Vission {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 10vw;
+  align-items: center;
+  gap: 10px;
+}
+.Wrapper .Vission p {
+  font-size: 18px;
+  max-width: 1500px;
+}
+.Wrapper > img {
+  max-width: 1400px;
+  width: 70%;
+  min-width: 350px;
+}
+
+@media screen and (max-width: 800px) {
+  .Wrapper > img {
+    max-width: 1400px;
+    width: 90%;
+    min-width: 350px;
+  }
+}
+@media screen and (max-width: 600px) {
+.Wrapper .Vission p ,.ToperSection .Mission p{
+  font-size: 15px;
+}
+}
