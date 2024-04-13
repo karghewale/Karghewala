@@ -1,4 +1,5 @@
 import { About } from "./components/about";
+import { Blogs } from "./components/blogs";
 import { Impact } from "./components/impact";
 import { Landing } from "./components/landing";
 import { Program } from "./components/program";
@@ -14,6 +15,7 @@ export const Home = (_props: Props) => {
       <Impact />
       <Program />
       <Testimonial />
+      <Blogs />
     </div>
   );
 };
