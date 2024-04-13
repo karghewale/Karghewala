@@ -1,8 +1,11 @@
-import styles from './index.module.css'
-type Props = {}
+import styles from "./index.module.css";
 
-export const Team = (_props: Props) => {
-  return (
-    <div className={styles.Wrapper}>Team</div>
-  )
-}
+
+export const Team = () => {
+  return <div className={styles.Wrapper}>Team</div>;
+};
+
+
+export const TeamCard = () => {
+  return <div className={styles.Wrapper}>Team</div>;
+};
