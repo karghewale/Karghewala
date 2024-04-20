@@ -39,6 +39,7 @@
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
+  border-bottom: 3px solid #fdb5c0;
 }
 .card .details {
   display: flex;
