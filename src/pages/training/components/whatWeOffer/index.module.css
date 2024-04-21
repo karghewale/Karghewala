@@ -1,0 +1,68 @@
+.Wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 10vw 6vh;
+  gap: 3vh;
+}
+
+.Wrapper .Content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.Content h2 {
+  color: var(--Secondary, #790416);
+  font-family: "AVGARDDbold";
+  font-size: 2em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.Content .cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+}
+
+.Wrapper .bar {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+}
+
+.Wrapper .bar > div {
+  background: var(--Tertiary, #fee6e9);
+  padding: 15px;
+  min-width: fit-content;
+}
+
+.Wrapper .bar > div:nth-child(1) {
+  width: calc(60% - 7.5px);
+}
+.Wrapper .bar > div:nth-child(2) {
+  width: calc(40% - 7.5px);
+}
+
+.bar h3 {
+  color: var(--Secondary, #790416);
+  font-family: "AVGARDDbold";
+  font-size: 22.688px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+}
+.bar p{
+    font-size: 16px;
+    color: #222222;
+}
+@media screen and (max-width: 820px) {
+  .Wrapper .bar {
+    flex-direction: column;
+  }
+  .Wrapper .bar > div {
+    width: 100% !important;
+  }
+}
