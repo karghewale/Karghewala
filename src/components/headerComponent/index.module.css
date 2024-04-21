@@ -1,0 +1,14 @@
+.Wrapper {
+  font-family: "AVGARDDnormal";
+  font-size: 3vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1; /* 84.533px */
+  letter-spacing: 7vw;
+  text-align: center;
+  padding-left: 7vw;
+}
+
+.Wrapper span:last-child {
+  margin-right: -6.5vw; /* Negative margin to counteract last letter spacing */
+}

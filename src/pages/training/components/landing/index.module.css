@@ -1,0 +1,86 @@
+.Wrapper {
+  display: flex;
+  padding: 6vh 10vw 6vh;
+  gap: 3vw;
+  text-align: left;
+  align-items: center;
+}
+.Wrapper .Content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+}
+.Wrapper .Content h3 {
+  font-family: "AVGARDDnormal";
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 30px;
+}
+.Wrapper .Content h2 {
+  font-family: "AVGARDDnormal";
+  font-size: 3em;
+  color: var(--Primary, #fdb5c0);
+  line-height: 1.1;
+}
+.Wrapper .Content p {
+  font-size: 1.2em;
+}
+.Wrapper .Content button {
+  width: fit-content;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  background-color: #790416;
+  color: white;
+  border-radius: 5px;
+}
+.imageWrap {
+  width: 40%;
+  flex-shrink: 0;
+  position: relative;
+}
+.imageWrap div {
+  height: 100%;
+  width: 100%;
+  background-color: #fdb5c0;
+  transform: rotate(-8deg);
+  position: absolute;
+  z-index: 0;
+}
+.imageWrap img {
+  width: 100%;
+  z-index: 100;
+  position: relative;
+}
+
+@media screen and (max-width: 1300px) {
+  .Wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+  .imageWrap {
+    width: 100%;
+    max-width: 500px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .Wrapper .Content h3 {
+    font-size: 25px;
+  }
+  .Wrapper .Content h2 {
+    font-size: 2.3em;
+  }
+  .Wrapper .Content p {
+    font-size: 1em;
+  }
+}
+@media screen and (max-width: 500px) {
+  .Wrapper .Content h3 {
+    font-size: 22px;
+  }
+  .Wrapper .Content h2 {
+    font-size: 2em;
+  }
+
+}

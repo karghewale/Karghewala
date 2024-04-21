@@ -5,5 +5,8 @@ type Props = {
 };
 
 export const HeaderComponent = (_props: Props) => {
-  return <span className={styles.Wrapper}>KARGHEWALE</span>;
+  return (
+    <span className={styles.Wrapper} style={{ color: _props.colors }}>
+      KARGHEWALE</span>
+  );
 };

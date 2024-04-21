@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import styles from "./index.module.css";
 import bg from "./bg.png";
+import { ArrowRight } from "../../../../assets/svg";
 type Props = {};
 
 
@@ -90,7 +91,7 @@ export const Landing = (_props: Props) => {
           impediments in traditional value chains to co-create, manage business,
           and sell the final products directly to the end consumer.
         </p>
-     
+        <button>EXPLORE WEBSITE <ArrowRight /></button>
       </div>
       <img src={bg} alt="" />
     </div>
