@@ -4,7 +4,6 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-import { CommingSoon } from "./pages/commingSoon";
 import { Home } from "./pages/home";
 import NotFound from "./pages/notfound";
 import { Training } from "./pages/training";
@@ -67,10 +66,7 @@ function App() {
       path: "/alumini",
       element: <Alumini />,
     },
-    {
-      path: "/comingsoon",
-      element: <CommingSoon />,
-    },
+
     {
       path: "/admin",
       element: <Login />,

@@ -1,0 +1,16 @@
+.Wrapper {
+  display: flex;
+  flex-direction: column;
+  background: url("./assets/bg.png") top center/cover no-repeat;
+  padding: 3vh 10vw 6vh;
+  gap: 3vh;
+  align-items: center;
+  background-size: 100% 500px;
+}
+
+
+@media screen and (max-width:1300px) {
+    .Wrapper{
+          background-size: 1300px 450px;
+    }
+}
