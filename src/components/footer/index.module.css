@@ -19,7 +19,6 @@
   background: linear-gradient(94deg, #7aec46 0%, #76d04d 60%);
 }
 
-
 .Content img {
   width: 100%;
 }
@@ -30,7 +29,7 @@
   max-width: 1600px;
   gap: 25px;
   width: 100%;
-padding: 0px 30px;
+  padding: 0px 30px;
 }
 .Content > div {
   display: flex;
@@ -85,8 +84,7 @@ padding: 0px 30px;
   gap: 10px;
 }
 @media screen and (max-width: 1140px) {
- 
-  .copyright{
+  .copyright {
     flex-direction: column;
     gap: 20px;
     max-width: 500px;
@@ -94,8 +92,10 @@ padding: 0px 30px;
 }
 
 @media screen and (max-width: 560px) {
-
-    .copyright{
-  gap: 20px;
+  .Content {
+    padding: 0px 10px;
+  }
+  .copyright {
+    gap: 20px;
   }
 }

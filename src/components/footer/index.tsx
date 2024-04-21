@@ -69,7 +69,7 @@ export const Footer = (_props: Props) => {
 
       <div className={styles.copyright}>
         <p>
-          Copyright © 2024 Karghewale Foundation. All Rights Reserved | Design
+          Copyright © 2024 Karghewale Foundation. All Rights Reserved | Crafted
           by&nbsp;
           <a href="https://fundesign.in" target="_blank">
             Fun Designs
