@@ -8,7 +8,7 @@ export const Contact = (_props: Props) => {
   return (
     <div className={styles.Wrapper}>
       <HeaderComponent colors="#95797c" />
-      <div>
+      <div className={styles.header}>
         <h3>CONTACT US</h3>
         <p>
           Come alongside us in our endeavor to empower artisans and strengthen
@@ -40,10 +40,11 @@ export const Contact = (_props: Props) => {
         </div>
         <div>
           <label htmlFor="name">Purpose of involvement</label>
-          <input type="text" placeholder="Message" />
+          <textarea placeholder="Message" />
         </div>
+        <button type="submit">SUBMIT</button>
       </form>
-      <div>
+      <div className={styles.locate}>
         <h2>locate US</h2>
         <div>
           <div>
@@ -62,19 +63,16 @@ export const Contact = (_props: Props) => {
           </div>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9812.069278507659!2d73.84791534614205!3d18.52574822765212!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c0616f0a2469%3A0x32aa1d556c044c27!2sJuna%20Bazar%2C%20Kasba%20Peth%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1713724618940!5m2!1sen!2sin"
-            width="600"
-            height="450"
-            style={{ border: 0 }}
             allowFullScreen={undefined}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
       </div>
-      <div>
+      <div className={styles.socials}>
         <h2>SOCIALS</h2>
         <div>
-          <a >
+          <a>
             <LinkedIn />
             <p>Linkedin</p>
           </a>{" "}
