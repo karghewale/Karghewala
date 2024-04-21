@@ -1,9 +1,10 @@
-import { HeaderComponent } from "../../components/headerComponent"
+import { HeaderComponent } from "../../components/headerComponent";
+import { Testimonial } from "../home/components/testimonials";
+import { Gallery } from "./components/gallery";
 import { Landing } from "./components/landing";
 import { WhatWeOffer } from "./components/whatWeOffer";
-import { WhyChooseUs } from "./components/whyChooseUs";
 
-type Props = {}
+type Props = {};
 
 export const Training = (_props: Props) => {
   return (
@@ -11,7 +12,8 @@ export const Training = (_props: Props) => {
       <HeaderComponent colors="#FEE6E9" />
       <Landing />
       <WhatWeOffer />
-      <WhyChooseUs />
+      <Testimonial />
+      <Gallery />
     </div>
   );
-}
+};
