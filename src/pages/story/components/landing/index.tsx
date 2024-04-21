@@ -8,7 +8,7 @@ type Props = {}
 export const Landing = (_props: Props) => {
   return (
     <div className={styles.Wrapper}>
-      <HeaderComponent colors='#FEE6E9' />
+      <HeaderComponent colors="#FEE6E9" />
       <div className={styles.story}>
         <h3>Our Story</h3>
         <p>
@@ -16,14 +16,14 @@ export const Landing = (_props: Props) => {
           <span style={{ color: "#790416" }}>coming-of-age</span>
           <span className="colorText">”</span> story, where our weaver artisans
           dream of overcoming neatly stacked odds to realize their potential as
-          <span style={{ color: "#790416" }}>&nbsp;proud ambassadors</span> of the
-          Indian handloom weaving tradition :)
+          <span style={{ color: "#790416" }}>&nbsp;proud ambassadors</span> of
+          the Indian handloom weaving tradition :)
         </p>
       </div>
       <Marquees />
-      <div>
+      <div className={styles.story}>
         <h2>The CONTEXT</h2>
-        <p>
+        <p className={styles.paragraph}>
           From an intimately known market to middle-layer driven value chains,
           the design agency shifted from artisans totally to the added layers,
           making artisans mere implementation centres. The middle-layer driven
@@ -34,7 +34,7 @@ export const Landing = (_props: Props) => {
         </p>
       </div>
       <img src={contextimg} alt="" />
-      <p>
+      <p className={styles.paragraph}>
         Even in fair trade, labour wages are more likely to be subsistence, than
         attractive; leading to the younger generation of weavers leaving the
         craft to try their fortunes at more fashionable vocations. A story of

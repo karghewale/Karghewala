@@ -3,6 +3,7 @@
   flex-direction: column;
   padding: 0px 0vw 6vh;
   gap: 3vh;
+  align-items: center;
 }
 
 .Wrapper .story {
@@ -15,7 +16,7 @@
 
 .story h3 {
   font-family: "AVGARDDbold";
-  font-size: 2em;
+  font-size: 1.7em;
   font-weight: 700;
   text-transform: uppercase;
   color: var(--Secondary, #790416);
@@ -27,11 +28,28 @@
   line-height: 1.2;
 }
 
-
-@media screen and (max-width:1000px) {
-    .story p {
-  font-size: 1.6rem;
-
+.story h2 {
+  font-family: "AVGARDDbold";
+  font-size: 2em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--Secondary, #790416);
 }
-
+.Wrapper > img {
+  width: 80%;
+}
+.Wrapper .story .paragraph{
+  padding: 0px 0vw !important;
+}
+.Wrapper .paragraph {
+  font-size: 1.15em !important;
+  max-width: 1450px !important;
+  line-height: 1.2;
+  text-align: center;
+  padding: 0px 6vw;
+}
+@media screen and (max-width: 1000px) {
+  .story p {
+    font-size: 1.6rem;
+  }
 }

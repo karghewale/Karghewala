@@ -1,0 +1,43 @@
+.Wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 8vw 6vh;
+  gap: 20px;
+}
+.Wrapper h2 {
+  font-family: "AVGARDDbold";
+  font-size: 2em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--Secondary, #790416);
+}
+.Wrapper > div {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.Wrapper > div a {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: calc(100% / 4 - 20px);
+  min-width: 270px;
+
+}
+.Wrapper > div a img{
+    width: 100%;
+}
+
+.Wrapper > div h3 {
+  position: absolute;
+  bottom: 0;
+  padding: 20px;
+  font-family: "AVGARDDbold";
+  color: #fff;
+  font-size: 2.2em;
+  line-height: 1;
+  text-transform: uppercase;
+}
