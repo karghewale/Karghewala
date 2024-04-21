@@ -1,6 +1,7 @@
 import styles from './index.module.css'
 import contextimg from './assets/contextimg.png'
 import { HeaderComponent } from '../../../../components/headerComponent'
+import { Marquees } from './marquee/marquee'
 
 type Props = {}
 
@@ -8,18 +9,18 @@ export const Landing = (_props: Props) => {
   return (
     <div className={styles.Wrapper}>
       <HeaderComponent colors='#FEE6E9' />
-      <div>
+      <div className={styles.story}>
         <h3>Our Story</h3>
         <p>
           A <span className="colorText">“</span>
           <span style={{ color: "#790416" }}>coming-of-age</span>
           <span className="colorText">”</span> story, where our weaver artisans
           dream of overcoming neatly stacked odds to realize their potential as
-          <span style={{ color: "#790416" }}>proud ambassadors</span> of the
+          <span style={{ color: "#790416" }}>&nbsp;proud ambassadors</span> of the
           Indian handloom weaving tradition :)
         </p>
       </div>
-      <div>{/* maarquee */}</div>
+      <Marquees />
       <div>
         <h2>The CONTEXT</h2>
         <p>

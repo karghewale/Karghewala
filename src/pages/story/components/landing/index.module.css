@@ -1,0 +1,37 @@
+.Wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 0vw 6vh;
+  gap: 3vh;
+}
+
+.Wrapper .story {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  padding: 0px 6vw;
+}
+
+.story h3 {
+  font-family: "AVGARDDbold";
+  font-size: 2em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--Secondary, #790416);
+}
+
+.story p {
+  font-size: 2rem;
+  max-width: 1000px;
+  line-height: 1.2;
+}
+
+
+@media screen and (max-width:1000px) {
+    .story p {
+  font-size: 1.6rem;
+
+}
+
+}

@@ -1,0 +1,17 @@
+.Wraapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.Wraapper .bgcolorrline{
+    position: absolute;
+    height: 100px;
+    width: 100vw;
+    background-color: #FDB5C0;
+}
+
+.Wraapper .individual{
+    padding: 0px 15px;
+}
