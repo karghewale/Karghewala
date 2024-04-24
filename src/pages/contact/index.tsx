@@ -47,7 +47,7 @@ export const Contact = (_props: Props) => {
       <div className={styles.locate}>
         <h2>locate US</h2>
         <div>
-          <div>
+          <div className={styles.address}>
             <div>
               <LocationSvg />
               <p>Loomers India Private Limited</p>
