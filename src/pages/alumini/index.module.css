@@ -1,0 +1,30 @@
+.Wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 5vw 20px;
+  width: 100%;
+}
+.blogpageheading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.blogpageheading h3 {
+  font-family: "AVGARDDbold";
+  font-size: 1.7em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--Secondary, #790416);
+}
+.blogpageheading p {
+  font-size: 2rem;
+  max-width: 1000px;
+  line-height: 1.2;
+}
+
+@media screen and (max-width: 1000px) {
+  .blogpageheading p {
+    font-size: 1.6rem;
+  }
+}

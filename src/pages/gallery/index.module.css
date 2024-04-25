@@ -1,0 +1,14 @@
+.Wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 5vw 20px;
+  width: 100%;
+}
+.Wrapper h3 {
+  font-family: "AVGARDDbold";
+  font-size: 1.7em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--Secondary, #790416);
+}
