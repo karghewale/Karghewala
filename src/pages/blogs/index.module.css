@@ -15,56 +15,6 @@
   position: relative;
 }
 
-.HeaderWrapper .DetailWrapper {
-  height: calc(100% - 50px);
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 3vw;
-  flex-wrap: wrap;
-  z-index: 10;
-}
-.HeaderWrapper .DetailWrapper .TopInner {
-  border-left: 5px solid #034852;
-  margin-left: 1vw;
-}
-.HeaderWrapper .DetailWrapper .TopInner p {
-  background-color: #05b570;
-  text-transform: uppercase;
-  width: fit-content;
-  height: fit-content;
-  font-size: 3vw;
-  line-height: 1.2;
-  margin-left: 2px;
-  color: white;
-  font-weight: 800;
-  padding: 0px 3px;
-}
-
-.HeaderWrapper .DetailWrapper .category {
-  display: flex;
-  gap: 25px;
-  z-index: 10;
-}
-@media screen and (max-width: 550px) {
-  .HeaderWrapper .DetailWrapper .TopInner p {
-    font-size: 30px;
-  }
-  .HeaderWrapper .DetailWrapper .category {
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-  }
-}
-.HeaderWrapper .DetailWrapper .category button {
-  background-color: transparent;
-  color: rgba(3, 72, 82, 1);
-  font-weight: 500;
-  font-size: 18px;
-  cursor: pointer;
-}
-
 .HeaderWrapper .topBlogs {
   display: flex;
   flex-wrap: wrap;
@@ -76,7 +26,7 @@
 }
 
 .HeaderWrapper .topBlogs h3 {
-  color: var(--Primary, #034852);
+  color: #790416;
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
@@ -96,7 +46,7 @@
   font-weight: 500;
 }
 .newsandupdates {
-  color: #034852;
+  color: #790416;
   background-color: rgba(234, 252, 255, 1);
 }
 
@@ -136,7 +86,7 @@
 .HeaderWrapper .topBlogs .mainblog img {
   width: 100%;
   height: 100%;
-  max-height: 310px;
+  max-height: 350px;
   object-fit: cover;
 }
 
@@ -171,14 +121,11 @@
 
 .HeaderWrapper .topBlogs .rightDiv > div img {
   height: 25vh;
-  width: 30vw;
+  width: 28vw;
   min-height: 220px;
   min-width: 350px;
-
+  flex-shrink: 0;
   object-fit: cover;
-}
-
-@media screen and (max-width: 1800px) {
 }
 
 @media screen and (max-width: 1500px) {
@@ -218,7 +165,7 @@
 }
 
 .allBlogs h1 {
-  color: var(--Primary, #034852);
+  color: var(--Primary, #790416);
   font-family: "Raleway";
   font-size: 50px;
   font-style: normal;
@@ -248,7 +195,7 @@
 
 .outerIndividualBlog .editable button {
   background-color: transparent;
-  color: #034852;
+  color: #790416;
   padding: 0;
 }
 .individualBlogDiv {
@@ -269,7 +216,7 @@
 }
 
 .individualBlogDiv h3 {
-  color: #1a1a1a;
+  color: #790416;
 
   font-size: 24px;
   font-style: normal;
@@ -290,14 +237,15 @@
   flex-wrap: wrap;
 }
 .allBlogs button {
-  background-color: rgba(0, 39, 45, 1);
+  background-color: #790416;
   padding: 11px 32px;
   font-size: 18px;
-  border-radius: 8px;
-  font-family: "Raleway";
+  border-radius: 5px;
+  text-transform: uppercase;
+  color: white;
 }
 @media screen and (max-width: 1050px) {
- .outerIndividualBlog {
+  .outerIndividualBlog {
     width: calc(100% / 2 - 8px);
   }
 }
@@ -336,7 +284,7 @@
   line-height: 1.1;
 }
 .bannerSection .LeftSection h1 span {
-  color: #034852;
+  color: #790416;
   border-bottom: 1vw solid rgba(255, 255, 255, 0.5);
   height: 4.3vw;
 }
@@ -353,7 +301,7 @@
   border-radius: 8px;
   background-color: #fff;
   font-size: 18px;
-  color: #034852;
+  color: #790416;
   padding: 11px 32px;
   margin-top: 5px;
 }
@@ -374,7 +322,7 @@
     line-height: 1.1;
   }
   .bannerSection .LeftSection h1 span {
-    color: #034852;
+    color: #790416;
     border-bottom: 1.5vw solid rgba(255, 255, 255, 0.5);
     height: 5.2vw;
   }
