@@ -1,7 +1,6 @@
 .Wrapper {
   display: flex;
-  flex-direction: column;
-  padding: 0px 6vw 6vh;
+  padding: 0px 5vw 6vh;
   gap: 6vh;
 }
 .Wrapper > div {
@@ -12,8 +11,7 @@
 }
 .Wrapper .Grid {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 
@@ -25,7 +23,7 @@
   text-transform: uppercase;
 }
 .card {
-  max-width: 300px;
+  max-width: 240px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,19 +37,26 @@
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
-  border-bottom: 3px solid #fdb5c0;
+  border-radius: 50%;
 }
 .card .details {
   display: flex;
   width: 100%;
-  gap: 25px;
+  gap: 20px;
   align-items: center;
   justify-content: space-between;
 }
-
+.details h3{
+  font-size: 18px;
+  color: #790416;
+}
+.details p{
+  font-size: 13px;
+  line-height: 1;
+}
 .details a {
   background-color: #fdb5c0;
-  width: 40px;
+  width: 28px;
   flex-shrink: 0;
   aspect-ratio: 1/1;
   display: flex;
@@ -59,6 +64,17 @@
   justify-content: center;
 }
 
+.details a svg{
+  width: 18px;
+}
+@media screen and (max-width: 1400px) {
+.Wrapper{
+  flex-direction: column;
+}
+.Wrapper .Grid{
+  flex-wrap: wrap;
+}
+}
 @media screen and (max-width: 1100px) {
   .card {
     max-width: 250px;

@@ -12,3 +12,11 @@
   text-transform: uppercase;
   color: var(--Secondary, #790416);
 }
+
+.Header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
