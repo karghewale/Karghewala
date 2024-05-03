@@ -4,10 +4,7 @@ import styles from "./index.module.css";
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  title: string;
   children: ReactNode;
-  type: "error" | "success";
-  body?: string;
 }
 
 const Modal: FC<ModalProps> = ({

@@ -1,74 +1,26 @@
 import { HeaderComponent } from "../../components/headerComponent";
 import styles from "./index.module.css";
-import a1 from "./assets/a1.png";
-import a2 from "./assets/a2.png";
-import a3 from "./assets/a3.png";
-import a4 from "./assets/a4.png";
-import a5 from "./assets/a5.png";
+import { useEffect, useState } from "react";
+import AluminiModal from "./components/aluminiModal";
+import { supabase } from "../../utils/supabase";
 
 export const Alumini = () => {
-  const data = [
-    {
-      id: 1,
-      name: "Kiran",
-      salary: "26,000",
-      image: a1,
-    },
-    {
-      id: 2,
-      name: "Kiran",
-      salary: "26,000",
-      image: a2,
-    },
-    {
-      id: 3,
-      name: "Kiran",
-      salary: "26,000",
-      image: a3,
-    },
-    {
-      id: 4,
-      name: "Kiran",
-      salary: "26,000",
-      image: a4,
-    },
-    {
-      id: 4,
-      name: "Kiran",
-      salary: "26,000",
-      image: a5,
-    },
-    {
-      id: 1,
-      name: "Kiran",
-      salary: "26,000",
-      image: a1,
-    },
-    {
-      id: 2,
-      name: "Kiran",
-      salary: "26,000",
-      image: a2,
-    },
-    {
-      id: 3,
-      name: "Kiran",
-      salary: "26,000",
-      image: a3,
-    },
-    {
-      id: 4,
-      name: "Kiran",
-      salary: "26,000",
-      image: a4,
-    },
-    {
-      id: 4,
-      name: "Kiran",
-      salary: "26,000",
-      image: a5,
-    },
-  ];
+  const [data, setData] = useState<AluminiResponseType[]>([]);
+  const [isMoalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    let { data: alumini, error } = await supabase.from("alumini").select("*");
+    if (error) {
+      console.log(error);
+    } else if (alumini) {
+      setData(alumini);
+    }
+  };
+
   return (
     <div className={styles.Wrapper}>
       <HeaderComponent colors="#FEE6E9" />
@@ -84,9 +36,13 @@ export const Alumini = () => {
         </p>
       </div>
       <div className={styles.content}>
-        {data.map((item, index) => {
+        {data?.map((item, index) => {
           return (
-            <div className={styles.alumini} key={index}>
+            <div
+              className={styles.alumini}
+              key={index}
+              onClick={() => setIsModalOpen(true)}
+            >
               <img src={item.image} alt={item.name} />
               <div className={styles.text}>
                 <h2>{item.name}</h2>
@@ -96,6 +52,7 @@ export const Alumini = () => {
           );
         })}
       </div>
+      <AluminiModal isOpen={isMoalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 };
