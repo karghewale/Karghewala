@@ -6,9 +6,7 @@ import a3 from "./assets/a3.png";
 import a4 from "./assets/a4.png";
 import a5 from "./assets/a5.png";
 
-type Props = {};
-
-export const Alumini = (_props: Props) => {
+export const Alumini = () => {
   const data = [
     {
       id: 1,
