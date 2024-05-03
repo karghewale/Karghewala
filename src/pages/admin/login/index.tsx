@@ -35,7 +35,7 @@ export const Login = (_props: Props) => {
 
   const handleLogin = async (formData: any) => {
     loginUser(formData).then(() => {
-      navigate("/admindashboard");
+      navigate("/dashboard");
     });
   };
 
