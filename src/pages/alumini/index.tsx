@@ -7,6 +7,7 @@ import { supabase } from "../../utils/supabase";
 export const Alumini = () => {
   const [data, setData] = useState<AluminiResponseType[]>([]);
   const [isMoalOpen, setIsModalOpen] = useState(false);
+  const [aluminiData, setAluminiData] = useState<AluminiResponseType>();
 
   useEffect(() => {
     fetchData();
@@ -41,7 +42,10 @@ export const Alumini = () => {
             <div
               className={styles.alumini}
               key={index}
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => {
+                setIsModalOpen(true);
+                setAluminiData(item);
+              }}
             >
               <img src={item.image} alt={item.name} />
               <div className={styles.text}>
@@ -52,7 +56,11 @@ export const Alumini = () => {
           );
         })}
       </div>
-      <AluminiModal isOpen={isMoalOpen} onClose={() => setIsModalOpen(false)} />
+      <AluminiModal
+        isOpen={isMoalOpen}
+        onClose={() => setIsModalOpen(false)}
+        data={aluminiData!}
+      />
     </div>
   );
 };
