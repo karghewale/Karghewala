@@ -93,7 +93,7 @@
   font-weight: 500;
   border-radius: 5px;
 }
-/* @media screen and (max-width:650px) {
+@media screen and (max-width:650px) {
   .content img{
     width: 100% !important;
   }
@@ -103,4 +103,4 @@
   .content .group_2 > div,.content .group_3 > div {
     width: 100%;
   }
-} */
+}

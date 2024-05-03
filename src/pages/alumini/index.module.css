@@ -5,10 +5,11 @@
   padding: 10px 5vw 20px;
   width: 100%;
 }
-.blogpageheading{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.blogpageheading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 4vh;
 }
 .blogpageheading h3 {
   font-family: "AVGARDDbold";
@@ -23,8 +24,68 @@
   line-height: 1.2;
 }
 
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  width: 100%;
+}
+
+.alumini {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: calc(100% / 6 - 8.4px);
+}
+
+.alumini img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  background-color: #fee6e9;
+  padding-top: 10px;
+}
+
+.alumini .text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.text h2 {
+  font-size: 20px;
+  color: #790416;
+}
+
+.text p {
+  color: #222;
+  font-size: 17px;
+  font-weight: 400;
+}
+@media screen and (max-width: 1700px) {
+  .alumini {
+    max-width: calc(100% / 5 - 8px);
+  }
+}
 @media screen and (max-width: 1000px) {
   .blogpageheading p {
     font-size: 1.6rem;
+  }
+  .alumini {
+    max-width: calc(100% / 4 - 7.5px);
+  }
+}
+@media screen and (max-width: 750px) {
+  .alumini {
+    max-width: calc(100% / 3 - 7px);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .alumini {
+    max-width: calc(100% / 2 - 10px);
   }
 }
