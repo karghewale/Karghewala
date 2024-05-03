@@ -5,6 +5,7 @@
   padding: 10px 5vw 20px;
   width: 100%;
 }
+
 .Wrapper h3 {
   font-family: "AVGARDDbold";
   font-size: 1.7em;
@@ -13,10 +14,63 @@
   color: var(--Secondary, #790416);
 }
 
-.Header{
+.Header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
 }
 
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  width: 100%;
+}
+
+.content img {
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.content > div {
+  display: flex;
+  gap: 1em;
+  width: 100%;
+}
+
+.content .group_1 img:nth-child(1),
+.content .group_1 img:nth-child(2),
+.content .group_1 img:nth-child(3) {
+  width: calc(100% / 3 - 0.666em);
+}
+
+.content .group_2 > div {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% / 3 - 0.666em);
+  gap: 1em;
+}
+
+.content .group_2 > div img:nth-child(1) {
+  width: 100%;
+}
+
+.content .group_2 > img {
+  width: calc((100% / 3) * 2 - 0.3em);
+}
+
+.content .group_3 > img {
+  width: calc(100% / 3 - 0.666em);
+}
+.content .group_3 > div {
+  display: flex;
+  flex-wrap: wrap;
+  width: calc((100% / 3) * 2 );
+  gap: 1em;
+  justify-content: space-between;
+}
+
+.content .group_3 > div img {
+  width: calc(100% / 2 - 0.5em);
+}
