@@ -149,11 +149,14 @@
   display: flex;
   overflow-x: auto;
   width: 100%;
+ 
 }
 
 .imgwrapper img {
   height: 200px;
+  width: auto;
   object-fit: cover;
+  margin-right: 13px;
 }
 
 @media screen and (max-width: 1000px) {
