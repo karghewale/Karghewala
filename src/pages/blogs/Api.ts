@@ -1,4 +1,4 @@
-import { supabase } from "../../App";
+import { supabase } from "../../utils/supabase";
 
 export const getBlogs = async () => {
   let { data: blogs, error } = await supabase.from("blogs").select("*");
