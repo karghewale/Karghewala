@@ -24,7 +24,6 @@
   width: 90%;
   max-width: 1000px;
   background-color: #ffffffea;
-  border-radius: 8px;
   overflow: hidden;
   position: relative;
   max-height: 100vh;
@@ -32,6 +31,7 @@
   overflow-y: auto;
   /* This will enable vertical scrolling when the content exceeds the max height */
   animation: appear 0.5s forwards cubic-bezier(0.075, 0.82, 0.165, 1);
+  border-bottom: 10px solid #FDB5C0;
 }
 
 .modalContent::-webkit-scrollbar {
@@ -40,7 +40,6 @@
 
 .modalBody {
   padding: 20px;
-  /* Adjust padding as needed */
 }
 
 @keyframes appear {

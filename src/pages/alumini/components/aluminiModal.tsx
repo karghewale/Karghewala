@@ -18,24 +18,26 @@ const AluminiModal = ({ isOpen, onClose, data }: Props) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <div className={styles.individual}>
+        <button className={styles.btn} onClick={onClose}>X</button>
         <div className={styles.content}>
           <img src={data?.image} alt="Profile Photo" />
-          <div>
+          <div className={styles.textContent}>
             <div>
               <h2>
-                {data?.name},<p>{data?.age}</p>
+                {data?.name},<p>&nbsp;{data?.age}</p>
               </h2>
-              {"["}
+
               <p>
-                <p>₹{data?.salary}/month</p>
-                <p>Avg. sale rate ₹{data?.sale_rate}/month</p>
+                {" "}
+                {"["}
+                <p>₹{data?.salary}/month |</p>
+                <p>&nbsp;Avg. sale rate ₹{data?.sale_rate}/month</p> {"]"}
               </p>
-              {"]"}
             </div>
             <p>{data?.description}</p>
           </div>
         </div>
-        <div style={{width:"100%",overflow:"hidden"}}>
+        <div style={{ width: "100%", overflow: "hidden" }}>
           <Marquee
             {...marqParams}
             style={{ width: "100vw" }}

@@ -95,7 +95,16 @@
   flex-direction: column;
   gap: 20px;
   width: 100%;
-  max-width: 1300px;
+  position: relative;
+}
+.btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: white;
+  color: #fdb5c0;
+  font-size: 23px;
+  font-weight: 600;
 }
 .individual .content {
   display: flex;
@@ -104,6 +113,32 @@
   width: 100%;
 }
 
+.textContent {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 10px;
+}
+.textContent > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.textContent > p {
+  font-size: 20px;
+}
+.textContent > div h2 {
+  display: flex;
+  flex-shrink: 0;
+  color: #790416;
+  font-size: 28px;
+}
+.textContent > div > p {
+  display: flex;
+  flex-shrink: 0;
+  font-size: 18px;
+}
 .individual .content img {
   width: 200px;
   aspect-ratio: 1/1;
@@ -119,4 +154,28 @@
 .imgwrapper img {
   height: 200px;
   object-fit: cover;
+}
+
+@media screen and (max-width: 1000px) {
+  .textContent > p {
+    font-size: 17px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .individual .content {
+    flex-wrap: wrap;
+  }
+  .textContent {
+    text-align: center;
+  }
+  .textContent > div {
+    justify-content: center;
+  }
+  .textContent > div > p {
+    flex-wrap: wrap;
+    flex-shrink: 1;
+    align-items: center;
+    justify-content: center;
+  }
 }
