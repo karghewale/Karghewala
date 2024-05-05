@@ -1,46 +1,54 @@
+import  { ChangeEvent, useState } from "react";
 import axios from "axios";
-import { useState } from "react";
 
 export const Dashboard = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const [savedFiles, setSavedFiles] = useState("");
 
-  const handleImageChange = (event : any) => {
-    setSelectedImage(event.target.files[0]);
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      setSelectedFiles(Array.from(event.target.files)); // Convert FileList to File array
+    }
   };
 
   const handleUpload = async () => {
-    if (!selectedImage) {
-      console.log("Please select an image.");
-      return;
-    }
+    const formData = new FormData();
 
-    let formData = new FormData();
-    formData.append("image_file", selectedImage);
+    // Append files to formData
+    selectedFiles.forEach((file) => {
+      formData.append("image_file", file, file.name);
+    });
 
-    let config = {
+    const config = {
       method: "post",
-      maxBodyLength: Infinity,
-      url: "https://image-hosting-oxpx.onrender.com/img/imagetourl/",
-      data: formData,
+      url: "https://imgtourl2.vercel.app/imagetourl/",
       headers: {
-        "Content-Type": "multipart/form-data",
+        // Removed Content-Type to let the browser set it with the correct boundary
+        Accept: "*/*",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
+        "Access-Control-Allow-Headers": "Content-Type",
       },
+      data: formData,
+      maxBodyLength: Infinity,
     };
 
-    axios
-      .request(config)
-      .then((response) => {
-        console.log(JSON.stringify(response.data));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      const response = await axios(config);
+      console.log(response.data.hosted_url);
+      setSavedFiles(response.data.hosted_url);
+      alert("Upload successful!");
+    } catch (error) {
+      console.error("Error uploading files:", error);
+      alert("Error uploading files");
+    }
   };
 
   return (
     <div>
-      <input type="file" onChange={handleImageChange} />
+      <input type="file" multiple onChange={handleFileChange} />
       <button onClick={handleUpload}>Upload</button>
+      <img src={savedFiles} alt="" />
     </div>
   );
 };

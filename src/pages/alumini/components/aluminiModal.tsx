@@ -28,7 +28,7 @@ const AluminiModal = ({ isOpen, onClose, data }: Props) => {
               </h2>
 
               <p>
-                {" "}
+             
                 {"["}
                 <p>₹{data?.salary}/month |</p>
                 <p>&nbsp;Avg. sale rate ₹{data?.sale_rate}/month</p> {"]"}
