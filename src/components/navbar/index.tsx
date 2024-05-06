@@ -48,7 +48,7 @@ export const Navbar = (_props: Props) => {
   function openMenu() {
     setopenmenu(!openmenu);
   }
-  const navContent = ["STORY", "TRAINING", "CONTACT","BLOGS","GALLERY","ALUMINI"];
+  const navContent = ["STORY", "TRAINING", "CONTACT"];
   const changeNavBg = () => {
     window.scrollY >= 100 ? setNavBg(true) : setNavBg(false);
   };

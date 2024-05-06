@@ -1,8 +1,8 @@
 import { CardComponent } from "../../../../components/contentCard";
 import {
-  Empowerment,
-  Ethical,
-  Market,
+  // Empowerment,
+  // Ethical,
+  // Market,
   SixMonth,
   TandM,
   ThreeYr,
@@ -30,23 +30,23 @@ export const WhatWeOffer = (_props: Props) => {
       para: "Following the training program, artisans have the opportunity to participate in our three-year incubation period. During this time, we provide ongoing mentorship, networking opportunities, and access to resources to help you launch & grow your business successfully.",
     },
   ];
-  const dataset = [
-    {
-      icon: <Market />,
-      title: "Market Connections",
-      para: "We understand the importance of establishing market connections in the creative industry. Through our extensive network of partners and collaborators, we help artisans showcase their work to a global audience and connect with potential buyers and retailers.",
-    },
-    {
-      icon: <Empowerment />,
-      title: "Empowerment and Recognition",
-      para: "We believe in giving artisans the recognition they deserve for their unique designs and cultural heritage. Our program is designed to empower artisans to take ownership of their creativity and establish their own distinct design and brand identity.",
-    },
-    {
-      icon: <Ethical />,
-      title: "Ethical and Sustainable Practices",
-      para: "At Karghewale Karuka Foundation, we are committed to promoting ethical & sustainable practices in the creative industry. We prioritize fair trade principles, environmental stewardship, & social responsibility, ensuring that artisans  & their communities thrive in a responsible manner.",
-    },
-  ];
+  // const dataset = [
+  //   {
+  //     icon: <Market />,
+  //     title: "Market Connections",
+  //     para: "We understand the importance of establishing market connections in the creative industry. Through our extensive network of partners and collaborators, we help artisans showcase their work to a global audience and connect with potential buyers and retailers.",
+  //   },
+  //   {
+  //     icon: <Empowerment />,
+  //     title: "Empowerment and Recognition",
+  //     para: "We believe in giving artisans the recognition they deserve for their unique designs and cultural heritage. Our program is designed to empower artisans to take ownership of their creativity and establish their own distinct design and brand identity.",
+  //   },
+  //   {
+  //     icon: <Ethical />,
+  //     title: "Ethical and Sustainable Practices",
+  //     para: "At Karghewale Karuka Foundation, we are committed to promoting ethical & sustainable practices in the creative industry. We prioritize fair trade principles, environmental stewardship, & social responsibility, ensuring that artisans  & their communities thrive in a responsible manner.",
+  //   },
+  // ];
   return (
     <div className={styles.Wrapper}>
       <div className={styles.Content}>
@@ -74,7 +74,7 @@ export const WhatWeOffer = (_props: Props) => {
         </div>
       </div>
       <img src={graph} alt="" />
-      <div className={styles.Content}>
+      {/* <div className={styles.Content}>
         <div className={styles.cards}>
           {dataset.map((item, index) => (
             <CardComponent
@@ -85,7 +85,7 @@ export const WhatWeOffer = (_props: Props) => {
             />
           ))}
         </div>
-      </div>
+      </div> */}
       <div className={styles.bottomset}>
         <p>
           Have an Queries?&nbsp;<a href="">Contact Us</a>
