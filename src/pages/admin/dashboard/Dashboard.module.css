@@ -1,0 +1,43 @@
+/* AdminDashboard css */
+.AdminDashboard {
+  padding: 100px 5vw 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6vh;
+}
+
+.AdminDashboard .buttonWrapper {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.AdminDashboard .head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.AdminDashboard .head > a {
+  text-decoration: none;
+  color: white;
+  background-color: #034852;
+  padding: 10px 25px;
+  border-radius: 10px;
+}
+.AdminDashboard .buttonWrapper button {
+  padding: 20px 35px;
+  border-radius: 10px;
+}
+
+.AdminDashboard h1 {
+  color: var(--Primary, #034852);
+  font-family: "Raleway";
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}

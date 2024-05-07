@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import styles from "./index.module.css";
-import bg from "./bg.png";
 import { ArrowRight } from "../../../../assets/svg";
+import videos from './Karuka-home-with-logo-white-bg.webp'
 type Props = {};
 
 
@@ -68,7 +68,6 @@ export const Landing = (_props: Props) => {
   return (
     <div className={styles.Wrapper}>
       <div>
-        {" "}
         <div>
           <h1>The Story Of </h1>
           <h1 className={styles.consoleContainer}>
@@ -91,9 +90,11 @@ export const Landing = (_props: Props) => {
           impediments in traditional value chains to co-create, manage business,
           and sell the final products directly to the end consumer.
         </p>
-        <button>EXPLORE WEBSITE <ArrowRight /></button>
+        <button>
+          EXPLORE WEBSITE <ArrowRight />
+        </button>
       </div>
-      <img src={bg} alt="" />
+      <img src={videos} alt="" />
     </div>
   );
 };
