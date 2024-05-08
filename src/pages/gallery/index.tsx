@@ -1,30 +1,38 @@
 import { HeaderComponent } from "../../components/headerComponent";
 import styles from "./index.module.css";
-import g1 from "./assets/g1.png";
-import g2 from "./assets/g2.png";
-import g3 from "./assets/g3.png";
-import g4 from "./assets/g4.png";
-import g5 from "./assets/g5.png";
-import g6 from "./assets/g6.png";
-import g7 from "./assets/g7.png";
-import g8 from "./assets/g8.png";
-import g9 from "./assets/g9.png";
-import g10 from "./assets/g10.png";
-import g11 from "./assets/g11.png";
-import g12 from "./assets/g12.png";
+
 import { BsFilterRight } from "react-icons/bs";
 import { IoIosArrowDown } from "react-icons/io";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getGallery } from "../admin/api";
 
 type Props = {};
 
 export const Gallery = (_props: Props) => {
-  const data = [g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12];
+  const [data, setData] = useState<any[]>([]);
+
+  const handleFetchDetails = async () => {
+    try {
+      const response = await getGallery();
+      if (response) {
+        const newData = response.map((item) => item.image);
+        const uniqueData = [...new Set([...data, ...newData])]; // Concatenate and remove duplicates
+        setData(uniqueData);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    handleFetchDetails();
+  }, []);
   const [showAll, setShowAll] = useState(0);
   const setsOfImages = chunkArray(data, 12);
 
-  function chunkArray(array: string[], size: number) {
+  function chunkArray(array: any, size: number) {
     const result = [];
+
     for (let i = 0; i < array.length; i += size) {
       result.push(array.slice(i, i + size));
     }
@@ -76,26 +84,27 @@ type ImageSetProps = {
 const ImageSetComponent = ({ imageSet }: ImageSetProps) =>
   imageSet.map((image: string | undefined, index: any) => (
     <div className={styles.content} key={index}>
-      <img src={image?.[0]} alt="" />
+      {image?.[0] && <img src={image[0]} alt="" />}
       <div className={styles.group_1}>
-        <img src={image?.[1]} alt="" />
-        <img src={image?.[2]} alt="" />
-        <img src={image?.[3]} alt="" />
+        {image?.[1] && <img src={image[1]} alt="" />}
+        {image?.[2] && <img src={image[2]} alt="" />}
+        {image?.[3] && <img src={image[3]} alt="" />}
       </div>
       <div className={styles.group_2}>
         <div>
-          <img src={image?.[4]} alt="" />
-          <img src={image?.[5]} alt="" />
+          {image?.[4] && <img src={image[4]} alt="" />}
+          {image?.[5] && <img src={image[5]} alt="" />}
         </div>
-        <img src={image?.[6]} alt="" />
+        {image?.[6] && <img src={image[6]} alt="" />}
       </div>
       <div className={styles.group_3}>
-        <img src={image?.[7]} alt="" />
+        {image?.[7] && <img src={image[7]} alt="" />}
+
         <div>
-          <img src={image?.[8]} alt="" />
-          <img src={image?.[9]} alt="" />
-          <img src={image?.[10]} alt="" />
-          <img src={image?.[11]} alt="" />
+          {image?.[8] && <img src={image[8]} alt="" />}
+          {image?.[9] && <img src={image[9]} alt="" />}
+          {image?.[10] && <img src={image[10]} alt="" />}
+          {image?.[11] && <img src={image[11]} alt="" />}
         </div>
       </div>
     </div>
