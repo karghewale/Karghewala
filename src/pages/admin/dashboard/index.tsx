@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import styles from "./Dashboard.module.css";
+import { Blogs } from "./blogs";
 
 type Props = {};
 
@@ -46,8 +47,8 @@ export const Dashboard = (_props: Props) => {
           );
         })}
       </div>
-      {/* {activeComponent === "Blogs" && <Blogs />}
-      {activeComponent === "HomeTestimonial" && <HomeTestimonial />}
+      {activeComponent === "Blogs" && <Blogs />}
+      {/*  {activeComponent === "HomeTestimonial" && <HomeTestimonial />}
       {activeComponent === "JoinUsTestimonial" && <JoinUsTestimonial />}
       {activeComponent === "VolunteerDirectory" && <VolunteerDirectory />} */}
     </div>

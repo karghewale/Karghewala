@@ -5,6 +5,8 @@
   flex-direction: column;
   align-items: center;
   gap: 6vh;
+    background-color: white;
+  width: 100%;
 }
 
 .AdminDashboard .buttonWrapper {
@@ -40,4 +42,37 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+}
+
+
+.allBlogs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+
+}
+
+.allBlogs .header {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.allBlogs .blogWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  text-align: left;
+  justify-content: center;
+}
+
+.allBlogs button {
+  background-color: rgba(0, 39, 45, 1);
+  padding: 11px 32px;
+  font-size: 18px;
+  border-radius: 8px;
+  font-family: "Raleway";
+  cursor: pointer;
 }
