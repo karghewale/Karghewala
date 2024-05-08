@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import styles from "./Dashboard.module.css";
 import { Blogs } from "./blogs";
+import { Gallery } from "./gallery";
 
 type Props = {};
 
@@ -14,8 +15,8 @@ export const Dashboard = (_props: Props) => {
       value: "Blogs",
     },
     {
-      name: " Home - Testimonials",
-      value: "HomeTestimonial",
+      name: "Gallery",
+      value: "Gallery",
     },
     {
       name: "Join Us - Testimonial",
@@ -48,8 +49,8 @@ export const Dashboard = (_props: Props) => {
         })}
       </div>
       {activeComponent === "Blogs" && <Blogs />}
-      {/*  {activeComponent === "HomeTestimonial" && <HomeTestimonial />}
-      {activeComponent === "JoinUsTestimonial" && <JoinUsTestimonial />}
+      {activeComponent === "Gallery" && <Gallery />}
+      {/* {activeComponent === "JoinUsTestimonial" && <JoinUsTestimonial />}
       {activeComponent === "VolunteerDirectory" && <VolunteerDirectory />} */}
     </div>
   );
