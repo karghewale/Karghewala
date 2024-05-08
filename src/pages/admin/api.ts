@@ -1,4 +1,3 @@
-
 import { supabase } from "../../utils/supabase";
 
 const currentDateAndTime = new Date();
@@ -8,9 +7,8 @@ const fetchUserData = async () => {
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  users = user?.email ?? ""; 
+  users = user?.email ?? "";
 };
-
 
 const year = currentDateAndTime.getFullYear();
 const month = currentDateAndTime.getMonth() + 1;
@@ -101,6 +99,19 @@ export const insertGallery = async (formdata: any) => {
     .from("gallery")
     .insert([adjustedData])
     .select();
+  if (error) {
+    throw error;
+  } else {
+    return gallery;
+  }
+};
+
+export const deleteGallery = async (formdata: any) => {
+  let { data: gallery, error } = await supabase
+    .from("gallery")
+    .delete()
+    .eq("id", formdata);
+
   if (error) {
     throw error;
   } else {
