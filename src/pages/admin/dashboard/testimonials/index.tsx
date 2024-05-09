@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import styles from "./index.module.css";
 import fav from "/Fav.jpg";
 import { getTestimonial, insertTestimonials } from "../../api";
+import axios from "axios";
 type Props = {};
 
 interface Testimonial {
@@ -24,32 +25,45 @@ export const Testimonialsdmin = (_props: Props) => {
     avgsale: "",
     imageSrc: "",
   });
-  const handleFetchDetails = async () => {
-    try {
-      const response = await getTestimonial();
-      if (response) {
-        setData(response);
-      }
-    } catch (error) {
-      console.log(error);
+
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const [savedFiles, setSavedFiles] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      setSelectedFiles(Array.from(event.target.files)); // Convert FileList to File array
     }
   };
   useEffect(() => {
-    handleFetchDetails();
-    console.log(showAddForm);
+    const fetchDetails = async () => {
+      try {
+        const response = await getTestimonial();
+        setData(response || []);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchDetails();
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    if (name === "imageSrc") {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: savedFiles,
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     try {
       const response = await insertTestimonials(formData);
       if (response) {
@@ -62,6 +76,45 @@ export const Testimonialsdmin = (_props: Props) => {
     setShowAddForm(false);
   };
 
+  const handleUpload = async () => {
+    setLoading(true); // Set loading to true when upload starts
+
+    const formDatas = new FormData();
+
+    // Append files to formData
+    selectedFiles.forEach((file) => {
+      formDatas.append("image_file", file, file.name);
+    });
+
+    const config = {
+      method: "post",
+      url: "https://imgtourl2.vercel.app/imagetourl/",
+      headers: {
+        Accept: "*/*",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
+        "Access-Control-Allow-Headers": "Content-Type",
+      },
+      data: formDatas,
+      maxBodyLength: Infinity,
+    };
+
+    try {
+      const response = await axios(config);
+      setSavedFiles(response.data.hosted_url);
+      console.log(response.data.hosted_url);
+       setFormData((prev) => ({
+         ...prev,
+         ["imageSrc"]: response.data.hosted_url,
+       }));
+
+    } catch (error) {
+      console.error("Error uploading files:", error);
+      alert("Error uploading files");
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className={styles.Wrapper}>
       <button onClick={() => setShowAddForm(true)}>Add Testimonial</button>
@@ -104,17 +157,39 @@ export const Testimonialsdmin = (_props: Props) => {
               X
             </button>
             <form onSubmit={handleSubmit}>
-              {Object.entries(formData).map(([key, value]) => (
-                <label key={key}>
-                  {key.charAt(0).toUpperCase() + key.slice(1)}:
-                  <input
-                    type="text"
-                    name={key}
-                    value={value}
-                    onChange={handleInputChange}
-                  />
-                </label>
-              ))}
+              {Object.entries(formData).map(([key, value]) =>
+                key === "imageSrc" ? (
+                  <label key={key}>
+                    {key.charAt(0).toUpperCase() + key.slice(1)}:
+                    <div className={styles.uploader}>
+                      {loading ? (
+                        <div>Loading...</div>
+                      ) : (
+                        <>
+                          <input
+                            type="file"
+                            multiple
+                            onChange={handleFileChange}
+                          />
+                          <button onClick={handleUpload}>Upload</button>
+                        </>
+                      )}
+                      <img style={{ width: "50px" }} src={savedFiles} alt="" />
+
+                    </div>
+                  </label>
+                ) : (
+                  <label key={key}>
+                    {key.charAt(0).toUpperCase() + key.slice(1)}:
+                    <input
+                      type="text"
+                      name={key}
+                      value={value}
+                      onChange={handleInputChange}
+                    />
+                  </label>
+                )
+              )}
               <button type="submit">Submit</button>
             </form>
           </div>
