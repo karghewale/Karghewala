@@ -1,4 +1,4 @@
-.Wrapper{
+.Wrapper {
   display: flex;
   flex-direction: column;
   padding: 0px 0vw 6vh;
@@ -15,10 +15,26 @@
 }
 
 .individual {
-    height: 300px;
-    padding: 0px 30px 0px 0px;
+  height: 300px;
+  margin: 0px 30px 0px 0px;
+  position: relative;
 }
 
-.individual img{
-    height: 100%;
+.individual .mask {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(121, 4, 22, 0) 0%,
+    rgba(121, 4, 22, 0.8) 100%
+  );
+  z-index: 1;
+}
+
+.individual img {
+  height: 100%;
 }

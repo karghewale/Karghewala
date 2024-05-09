@@ -11,20 +11,19 @@ type Props = {};
 export const Gallery = (_props: Props) => {
   const [data, setData] = useState<any[]>([]);
 
-  const handleFetchDetails = async () => {
-    try {
-      const response = await getGallery();
-      if (response) {
-        const newData = response.map((item) => item.image);
-        const uniqueData = [...new Set([...data, ...newData])]; // Concatenate and remove duplicates
-        setData(uniqueData);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
+    const handleFetchDetails = async () => {
+      try {
+        const response = await getGallery();
+        if (response) {
+          const newData = response.map((item) => item.image);
+          const uniqueData = [...new Set([...data, ...newData])]; // Concatenate and remove duplicates
+          setData(uniqueData);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
     handleFetchDetails();
   }, []);
   const [showAll, setShowAll] = useState(0);

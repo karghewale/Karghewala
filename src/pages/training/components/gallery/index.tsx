@@ -1,31 +1,45 @@
-import Marquee from 'react-fast-marquee';
-import styles from './index.module.css'
+import Marquee from "react-fast-marquee";
+import styles from "./index.module.css";
 
-type Props = {}
-import m1 from "./assets/g1.png";
-import m2 from "./assets/g2.png";
-import m3 from "./assets/g3.png";
-import m4 from "./assets/g4.png";
-import m5 from "./assets/g5.png";
-import m6 from "./assets/g6.png";
+type Props = {};
 
-const images = [m1, m2, m3, m4, m5, m6];
+import { useEffect, useState } from "react";
+import { getGallery } from "../../../admin/api";
+
 
 export const Gallery = (_props: Props) => {
-      const marqParams = {
-        autoFill: true,
-        pauseOnHover: true,
-        gradient: false,
-        speed: 30,
-        drag: true,
-      };
+  const marqParams = {
+    autoFill: true,
+    pauseOnHover: true,
+    gradient: false,
+    speed: 30,
+    drag: true,
+  };
+  const [data, setData] = useState<any[]>([]);
+  useEffect(() => {
+    const handleFetchDetails = async () => {
+      try {
+        const response = await getGallery();
+        if (response) {
+          const newData = response.map((item) => item.image);
+          const uniqueData = [...new Set([...data, ...newData])]; // Concatenate and remove duplicates
+          setData(uniqueData);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    handleFetchDetails();
+  }, []);
+
   return (
     <div className={styles.Wrapper}>
       <h2>Gallery</h2>
       <div className={styles.ImageWrapper}>
         <Marquee {...marqParams} style={{ width: "100vw" }}>
-          {images.map((image, index) => (
+          {data.map((image, index) => (
             <div key={index} className={styles.individual}>
+              <div className={styles.mask}></div>
               <img src={image} alt="company logo" loading="lazy" />
             </div>
           ))}
@@ -33,4 +47,4 @@ export const Gallery = (_props: Props) => {
       </div>
     </div>
   );
-}
+};
