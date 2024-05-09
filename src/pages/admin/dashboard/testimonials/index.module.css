@@ -49,6 +49,7 @@
   background-color: #ffffff;
   border-top: 5px solid #fdb5c0;
   border-bottom: 5px solid #fdb5c0;
+  gap: 15px;
 }
 .swiper .testimonial {
   width: 60%;

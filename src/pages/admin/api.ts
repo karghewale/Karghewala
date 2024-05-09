@@ -78,6 +78,7 @@ export const updateBlogs = async (formdata: any) => {
   }
 };
 
+// gllery
 export const getGallery = async () => {
   let { data: gallery, error } = await supabase.from("gallery").select("*");
   if (error) {
@@ -116,5 +117,18 @@ export const deleteGallery = async (formdata: any) => {
     throw error;
   } else {
     return gallery;
+  }
+};
+
+// testimonils
+export const getTestimonial = async () => {
+  let { data: testimonial, error } = await supabase
+    .from("testimonial")
+    .select("*");
+
+  if (error) {
+    throw error;
+  } else {
+    return testimonial;
   }
 };

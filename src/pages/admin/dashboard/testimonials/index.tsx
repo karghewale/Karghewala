@@ -1,54 +1,32 @@
+import { useEffect, useState } from 'react';
 import styles from './index.module.css'
 import fav from "/Fav.jpg";
+import { getTestimonial } from '../../api';
 type Props = {}
 
-type Testimonial = {
-  quote: string;
-  name: string;
-  age: string;
-  month: string;
-  avgsale: string;
-  imageSrc: string;
-};
-
 export const Testimonialsdmin = (_props: Props) => {
-    const testimonials: Testimonial[] = [
-      {
-        quote:
-          "“Earlier we did not encourage people to work in this sector because the money was very less. But now due to training and support from Karghewale our earnings increased.”",
-        name: "Shanawaj Khan",
-        age: "26",
-        month: " 26,000",
-        avgsale: "70,000",
-        imageSrc:
-          "https://burst.shopifycdn.com/photos/two-tone-ink-cloud.jpg?width=1000&format=pjpg&exif=0&iptc=0",
-      },
-      {
-        quote:
-          "“Earlier we did not encourage people to work in this sector because the money was very less. But now due to training and support from Karghewale our earnings increased.”",
-        name: "Shanawaj Khan",
-        age: "26",
-        month: " 26,000",
-        avgsale: "70,000",
-        imageSrc:
-          "https://burst.shopifycdn.com/photos/two-tone-ink-cloud.jpg?width=1000&format=pjpg&exif=0&iptc=0",
-      },
-      {
-        quote:
-          "“Earlier we did not encourage people to work in this sector because the money was very less. But now due to training and support from Karghewale our earnings increased.”",
-        name: "Shanawaj Khan",
-        age: "26",
-        month: " 26,000",
-        avgsale: "70,000",
-        imageSrc:
-          "https://burst.shopifycdn.com/photos/two-tone-ink-cloud.jpg?width=1000&format=pjpg&exif=0&iptc=0",
-      },
-    ];
+    const [data, setData] = useState<any[]>([]);
+    const handleFetchDetails = async () => {
+      try {
+        const response = await getTestimonial();
+        if (response) {
+          setData(response);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    useEffect(() => {
+      handleFetchDetails();
+    }, []);
+
+
   return (
     <div className={styles.Wrapper}>
+      <button>Add Testimonial</button>
       <h2>TESTIMONIALS</h2>
       <div className={styles.swiper}>
-        {testimonials.map((testimonial, index) => (
+        {data.map((testimonial, index) => (
           <div key={index} className={styles.swiperSlider}>
             <div className={styles.testimonial}>
               <h3>{testimonial.quote}</h3>
