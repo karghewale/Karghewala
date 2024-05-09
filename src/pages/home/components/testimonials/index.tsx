@@ -7,41 +7,14 @@ import slash from "./assets/slash.png";
 import fav from "/Fav.jpg";
 
 type Props = {};
-import deepusnath from "./assets/image.png";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { getTestimonial } from "../../../admin/api";
 
-type Testimonial = {
-  quote: string;
-  name: string;
-  age: string;
-  month: string;
-  avgsale: string;
-  imageSrc: string;
-};
 
-const testimonials: Testimonial[] = [
-  {
-    quote:
-      "“Earlier we did not encourage people to work in this sector because the money was very less. But now due to training and support from Karghewale our earnings increased.”",
-    name: "Shanawaj Khan",
-    age: "26",
-    month: " 26,000",
-    avgsale: "70,000",
-    imageSrc: deepusnath,
-  },
-  {
-    quote:
-      "“Earlier we did not encourage people to work in this sector because the money was very less. But now due to training and support from Karghewale our earnings increased.”",
-    name: "Shanawaj Khan",
-    age: "26",
-    month: " 26,000",
-    avgsale: "70,000",
-    imageSrc: deepusnath,
-  },
-];
 
 export const Testimonial = (_props: Props) => {
   const swiperRef = useRef<SwiperRef>(null);
+    const [data, setData] = useState<any[]>([]);
   const slideLeft = () => {
     if (swiperRef.current?.swiper) {
       swiperRef.current.swiper.slidePrev();
@@ -53,6 +26,17 @@ export const Testimonial = (_props: Props) => {
       swiperRef.current.swiper.slideNext();
     }
   };
+    useEffect(() => {
+      const fetchDetails = async () => {
+        try {
+          const response = await getTestimonial();
+          setData(response || []);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      fetchDetails();
+    }, []);
 
   return (
     <div className={styles.Wrapper}>
@@ -70,10 +54,10 @@ export const Testimonial = (_props: Props) => {
             className={styles.swiper}
             ref={swiperRef}
           >
-            {testimonials.map((testimonial, index) => (
+            {data.map((testimonial, index) => (
               <SwiperSlide key={index} className={styles.swiperSlider}>
                 <div className={styles.testimonial}>
-                  {" "}
+                
                   <img className={styles.slash} src={slash} alt="" />
                   <h3>{testimonial.quote}</h3>
                   <div>
