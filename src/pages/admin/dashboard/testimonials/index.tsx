@@ -1,8 +1,10 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import styles from "./index.module.css";
 import fav from "/Fav.jpg";
-import { getTestimonial, insertTestimonials } from "../../api";
+import { deleteTestimnonial, getTestimonial, insertTestimonials } from "../../api";
 import axios from "axios";
+import { FaEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 type Props = {};
 
 interface Testimonial {
@@ -103,11 +105,10 @@ export const Testimonialsdmin = (_props: Props) => {
       const response = await axios(config);
       setSavedFiles(response.data.hosted_url);
       console.log(response.data.hosted_url);
-       setFormData((prev) => ({
-         ...prev,
-         ["imageSrc"]: response.data.hosted_url,
-       }));
-
+      setFormData((prev) => ({
+        ...prev,
+        ["imageSrc"]: response.data.hosted_url,
+      }));
     } catch (error) {
       console.error("Error uploading files:", error);
       alert("Error uploading files");
@@ -115,6 +116,16 @@ export const Testimonialsdmin = (_props: Props) => {
       setLoading(false);
     }
   };
+
+    const handleDelete = async (value: any) => {
+      try {
+        await deleteTestimnonial(value);
+        const updatedData = data.filter((item) => item.id !== value);
+        setData(updatedData);
+      } catch (error) {
+        console.log(error);
+      }
+    };
   return (
     <div className={styles.Wrapper}>
       <button onClick={() => setShowAddForm(true)}>Add Testimonial</button>
@@ -122,9 +133,13 @@ export const Testimonialsdmin = (_props: Props) => {
       <div className={styles.swiper}>
         {data.map((testimonial, index) => (
           <div key={index} className={styles.swiperSlider}>
-            <div>
-              <button>Edit</button>
-              <button>Delete</button>
+            <div className={styles.actionbtn}>
+              <button>
+                <FaEdit />
+              </button>
+              <button onClick={() => handleDelete(testimonial.id)}>
+                <MdDelete />
+              </button>
             </div>
             <div className={styles.testimonial}>
               <h3>{testimonial.quote}</h3>
@@ -165,17 +180,16 @@ export const Testimonialsdmin = (_props: Props) => {
                       {loading ? (
                         <div>Loading...</div>
                       ) : (
-                        <>
+                        <div>
                           <input
                             type="file"
                             multiple
                             onChange={handleFileChange}
                           />
                           <button onClick={handleUpload}>Upload</button>
-                        </>
+                        </div>
                       )}
-                      <img style={{ width: "50px" }} src={savedFiles} alt="" />
-
+                      <img style={{ width: "100px" }} src={savedFiles} alt="" />
                     </div>
                   </label>
                 ) : (

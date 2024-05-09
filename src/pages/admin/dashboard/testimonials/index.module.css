@@ -18,7 +18,6 @@
 
 .Wrapper > button {
   align-self: flex-end;
-  position: sticky;
   top: 50px;
   background-color: #790416;
   color: white;
@@ -37,14 +36,18 @@
   justify-content: center;
 }
 
-.Wrapper .SwiperWrapper {
-  width: 100%;
-  height: 100%;
-  max-width: 1000px;
+.Wrapper .actionbtn {
   display: flex;
-  align-items: center;
-  position: relative;
-  padding: 0px 5vw;
+  gap: 10px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.Wrapper .actionbtn button {
+  background-color: white;
+  padding: 10px;
+  color: black;
+  font-size: 20px;
 }
 .Wrapper .swiper {
   width: 100%;
@@ -61,6 +64,7 @@
   border-top: 5px solid #fdb5c0;
   border-bottom: 5px solid #fdb5c0;
   gap: 15px;
+  position: relative;
 }
 .swiper .testimonial {
   width: 60%;
@@ -141,9 +145,7 @@
 }
 
 @media screen and (max-width: 900px) {
-  .Wrapper .SwiperWrapper {
-    padding: 0px;
-  }
+
   .swiper .ImageContainer {
     min-width: 200px;
   }
@@ -158,6 +160,7 @@
     text-align: center;
     align-items: center;
     padding-bottom: 0px;
+    padding: 20px 0px;
   }
   .swiper .ImageContainer {
     width: 100% !important;
@@ -200,7 +203,7 @@
 }
 
 .popupmodal .content {
-  z-index: 1500;
+  z-index: 5500;
   width: 90%;
   background-color: #fff;
   max-width: 1000px;
@@ -219,4 +222,33 @@
   cursor: pointer;
   width: fit-content;
   align-self: flex-end;
+}
+
+.popupmodal form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+
+.popupmodal form label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.popupmodal form label input {
+  width: 100%;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.popupmodal .uploader {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
 }

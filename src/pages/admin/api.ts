@@ -134,6 +134,7 @@ export const getTestimonial = async () => {
 };
 
 export const insertTestimonials = async (formdata: any) => {
+    await fetchUserData();
   const adjustedData = {
     quote: formdata.quote,
     created_at: formattedDateAndTime,
@@ -152,6 +153,19 @@ export const insertTestimonials = async (formdata: any) => {
 
   if (error) {
     // Handle the error
+    throw error;
+  } else {
+    return testimonial;
+  }
+};
+
+export const deleteTestimnonial = async (formdata: any) => {
+  let { data: testimonial, error } = await supabase
+    .from("testimonial")
+    .delete()
+    .eq("id", formdata);
+
+  if (error) {
     throw error;
   } else {
     return testimonial;
