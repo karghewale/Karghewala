@@ -132,3 +132,28 @@ export const getTestimonial = async () => {
     return testimonial;
   }
 };
+
+export const insertTestimonials = async (formdata: any) => {
+  const adjustedData = {
+    quote: formdata.quote,
+    created_at: formattedDateAndTime,
+    name: formdata.name,
+    age: formdata.age,
+    month: formdata.month,
+    avgsale: formdata.avgsale,
+    imageSrc: formdata.imageSrc,
+    created_by: users,
+  };
+  console.log(adjustedData);
+  const { data: testimonial, error } = await supabase
+    .from("testimonial")
+    .insert([adjustedData])
+    .select();
+
+  if (error) {
+    // Handle the error
+    throw error;
+  } else {
+    return testimonial;
+  }
+};

@@ -5,6 +5,7 @@
   align-items: center;
   position: relative;
   padding: 0vh 0vw 6vh;
+  position: relative;
 }
 .Wrapper h2 {
   color: var(--Secondary, #790416);
@@ -13,6 +14,16 @@
   font-weight: 700;
   text-transform: uppercase;
   padding: 0vh 10vw 0vh;
+}
+
+.Wrapper > button {
+  align-self: flex-end;
+  position: sticky;
+  top: 50px;
+  background-color: #790416;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
 }
 
 .Wrapper > div {
@@ -35,7 +46,7 @@
   position: relative;
   padding: 0px 5vw;
 }
-.Wrapper  .swiper {
+.Wrapper .swiper {
   width: 100%;
   height: 100%;
   display: flex;
@@ -165,4 +176,47 @@
   .testimonial > div {
     align-items: center;
   }
+}
+
+.popupmodal {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100dvh !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.popupmodal .back {
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backdrop-filter: blur(6px);
+}
+
+.popupmodal .content {
+  z-index: 1500;
+  width: 90%;
+  background-color: #fff;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.popupmodal button {
+  background-color: red;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: fit-content;
+  align-self: flex-end;
 }
