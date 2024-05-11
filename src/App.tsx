@@ -18,6 +18,7 @@ import PrivateRoutes from "./services/privateRoute";
 import { useEffect } from "react";
 import { Layout } from "./pages/layout";
 import { VoiceRecorder } from "./components/test/VoiceRecorder";
+import { Transcripts } from "./components/test/Transcript";
 
 function App() {
   const router = createBrowserRouter([
@@ -32,6 +33,10 @@ function App() {
     {
       path: "/voicerecorder",
       element: <VoiceRecorder />,
+    },
+    {
+      path: "/transcripts",
+      element: <Transcripts />,
     },
     {
       path: "/",
