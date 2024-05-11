@@ -17,6 +17,7 @@ import { Dashboard } from "./pages/admin/dashboard";
 import PrivateRoutes from "./services/privateRoute";
 import { useEffect } from "react";
 import { Layout } from "./pages/layout";
+import { VoiceRecorder } from "./components/test/VoiceRecorder";
 
 function App() {
   const router = createBrowserRouter([
@@ -27,6 +28,10 @@ function App() {
     {
       path: "/404",
       element: <NotFound />,
+    },
+    {
+      path: "/voicerecorder",
+      element: <VoiceRecorder />,
     },
     {
       path: "/",
