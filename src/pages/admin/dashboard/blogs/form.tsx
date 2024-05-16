@@ -19,9 +19,10 @@ export const Form = () => {
       name: "Insights",
     },
   ];
+  
   const setIsModalOpen = useBlogStore((state) => state.setIsModalOpen);
   const item = useBlogStore((state) => state.item);
-  const [formData, setFormData] = useState(item);
+  const [formData, setFormData] = useState<BlogPost>(item);
   const isEdit = useBlogStore((state) => state.isEdit);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -72,7 +73,7 @@ export const Form = () => {
         : category;
       return {
         ...prevData,
-        categories: updatedCategories,
+        category: updatedCategories,
       };
     });
   };
