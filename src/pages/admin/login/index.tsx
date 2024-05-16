@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./index.module.css";
-import { loginUser } from "./loginApis";
+import { supabase } from "../../../utils/supabase";
+import toast from "react-hot-toast";
 
-type Props = {};
-
-export const Login = (_props: Props) => {
+export const Login = () => {
   const navigate = useNavigate();
   const [data, setData] = useState({
     usernameOrEmail: "",
@@ -46,8 +45,25 @@ export const Login = (_props: Props) => {
     }
   };
 
-  const goToHome = () => {
-    navigate("/home"); // Navigate to the '/home' route
+  const loginUser = async (data1: {
+    usernameOrEmail: string;
+    password: string;
+  }) => {
+    try {
+      let { data, error } = await supabase.auth.signInWithPassword({
+        email: data1.usernameOrEmail,
+        password: data1.password,
+      });
+      if (error) {
+        toast.error(error.message);
+        navigate("/admin");
+      } else {
+        return data;
+      }
+    } catch (error) {
+      console.error("Registration API error:", error);
+      throw error;
+    }
   };
   return (
     <div className={styles.RegistrationWrapper}>
@@ -57,7 +73,6 @@ export const Login = (_props: Props) => {
           Welcome back to Opengrad - Admin,<br></br> login to continue
         </h3>
       </div>
-      {/* <img src={image} alt="" /> */}
       <div className={styles.InputContainerWrapper}>
         <div>
           <input
@@ -89,7 +104,7 @@ export const Login = (_props: Props) => {
         </div>
         <div className={styles.buttonWrapper}>
           <button onClick={handleSubmit}>Log In</button>
-          <button onClick={goToHome}>Home</button>
+          <button onClick={() => navigate("/home")}>Home</button>
         </div>
       </div>
     </div>
