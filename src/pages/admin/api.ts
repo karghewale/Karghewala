@@ -19,10 +19,6 @@ const seconds = currentDateAndTime.getSeconds();
 
 const formattedDateAndTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
-export const getBlogs = async () => {
-  
-};
-
 export const insertBlogs = async (formdata: any) => {
   const adjustedData = {
     title: formdata.title,

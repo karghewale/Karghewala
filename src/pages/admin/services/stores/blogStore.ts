@@ -5,6 +5,8 @@ interface BlogStoreType {
   setItem: (item: BlogPost) => void;
   isModalOpen: boolean;
   setIsModalOpen: (isEdit: boolean) => void;
+  isEdit: boolean;
+  setIsEdit: (isEdit: boolean) => void;
 }
 
 export const useBlogStore = create<BlogStoreType>()((set) => ({
@@ -22,4 +24,6 @@ export const useBlogStore = create<BlogStoreType>()((set) => ({
   setItem: (item) => set({ item }),
   isModalOpen: false,
   setIsModalOpen: (isModalOpen) => set({ isModalOpen }),
+  isEdit: false,
+  setIsEdit: (isEdit) => set({ isEdit }),
 }))

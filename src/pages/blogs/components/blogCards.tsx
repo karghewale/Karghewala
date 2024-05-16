@@ -16,6 +16,7 @@ export const IndividualBlogContainer = ({
 }: IndividualBlogContainerProps) => {
   const setItem = useBlogStore((state) => state.setItem);
   const setIsModalOpen = useBlogStore((state) => state.setIsModalOpen);
+  const setIsEdit = useBlogStore((state) => state.setIsEdit);
 
   const detailBlogs = (id: any) => {
     console.log(id);
@@ -49,6 +50,7 @@ export const IndividualBlogContainer = ({
 
   const handleEdit = () => {
     setItem(item);
+    setIsEdit(true);
     setIsModalOpen(true);
   }
 

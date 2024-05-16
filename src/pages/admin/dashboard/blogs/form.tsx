@@ -1,7 +1,8 @@
 import { useState, ChangeEvent } from "react";
 import styles from "../Form.module.css";
-import { insertBlogs } from "../../api";
 import { useBlogStore } from "../../services/stores/blogStore";
+import { supabase } from "../../../../utils/supabase";
+import toast from "react-hot-toast";
 
 export const Form = () => {
   const datas = [
@@ -18,10 +19,10 @@ export const Form = () => {
       name: "Insights",
     },
   ];
-  const [insertdata, setInsertData] = useState<any[]>([]);
-  const setIsModalOpen = useBlogStore((state)=>state.setIsModalOpen)
-  const item = useBlogStore((state)=>state.item)
+  const setIsModalOpen = useBlogStore((state) => state.setIsModalOpen);
+  const item = useBlogStore((state) => state.item);
   const [formData, setFormData] = useState(item);
+  const isEdit = useBlogStore((state) => state.isEdit);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -79,31 +80,55 @@ export const Form = () => {
   const handleAddFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    console.log(formData);
-    setFormData({
-      title: "",
-      image: "",
-      author: "",
-      extra_images: "",
-      dateofblog: "",
-      description: "",
-      category: "",
-      id: "",
-    });
-    try {
-      const response = await insertBlogs(formData);
-      if (response) {
-        setInsertData(response);
-        console.log(insertdata);
+    if (isEdit) {
+      const newData = {
+        title: formData.title,
+        author: formData.author,
+        dateofblog: formData.dateofblog,
+        extra_images: formData.extra_images,
+        image: formData.image,
+        description: formData.description,
+        category: formData.category,
+      };
+      const { data: blogs, error } = await supabase
+        .from("blogs")
+        .update(newData)
+        .eq("id", formData.id)
+        .select();
+
+      if (error) {
+        throw error;
+      } else {
+        toast.success("Blog updated successfully");
+        setIsModalOpen(false);
+        return blogs;
       }
-    } catch (error) {
-      console.log(error);
+    } else {
+      const newData = {
+        title: formData.title,
+        author: formData.author,
+        dateofblog: formData.dateofblog,
+        extra_images: formData.extra_images,
+        image: formData.image,
+        description: formData.description,
+        category: formData.category,
+      };
+      const { data: blog, error } = await supabase
+        .from("blogs")
+        .insert([newData])
+        .select();
+      if (error) {
+        throw error;
+      } else {
+        toast.success("Blog added successfully");
+        setIsModalOpen(false);
+        return blog;
+      }
     }
-    setIsModalOpen(false)
   };
 
   const handleAddButtonClick = () => {
-    setIsModalOpen(false)
+    setIsModalOpen(false);
   };
   return (
     <div className={styles.modalOverlay}>

@@ -12,6 +12,7 @@ export const Blogs = () => {
   const isModalOpen = useBlogStore((state) => state.isModalOpen);
   const setIsModalOpen = useBlogStore((state) => state.setIsModalOpen);
   const setItem = useBlogStore((state) => state.setItem);
+  const setIsEdit = useBlogStore((state) => state.setIsEdit);
 
   const handleFetchDetails = async () => {
     let { data: blogs, error } = await supabase.from("blogs").select("*");
@@ -45,6 +46,7 @@ export const Blogs = () => {
               author: "",
               extra_images: "",
             });
+            setIsEdit(false);
           }}
         >
           Add
