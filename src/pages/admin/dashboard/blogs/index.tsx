@@ -1,26 +1,26 @@
 import { useState, useEffect } from "react";
 import styles from "../Dashboard.module.css";
-import { IndividualBlogContainer } from "../../../blogs";
-import { getBlogs } from "../../api";
 import { Form } from "./form";
+import { supabase } from "../../../../utils/supabase";
+import toast from "react-hot-toast";
+import { IndividualBlogContainer } from "../../../blogs/components/blogCards";
+import { useBlogStore } from "../../services/stores/blogStore";
 
-type Props = {};
-
-export const Blogs = (_props: Props) => {
-  const [data, setData] = useState<any[]>([]);
-
-  const [showAddForm, setShowAddForm] = useState(false);
-
+export const Blogs = () => {
+  const [data, setData] = useState<BlogPost[]>([]);
   const [count, setCount] = useState(6);
+  const isModalOpen = useBlogStore((state) => state.isModalOpen);
+  const setIsModalOpen = useBlogStore((state) => state.setIsModalOpen);
+  const setItem = useBlogStore((state) => state.setItem);
 
   const handleFetchDetails = async () => {
-    try {
-      const response = await getBlogs();
-      if (response) {
-        setData(response);
-      }
-    } catch (error) {
-      console.log(error);
+    let { data: blogs, error } = await supabase.from("blogs").select("*");
+    if (error) {
+      toast.error(error.message);
+      throw error;
+    } else {
+      setData(blogs as BlogPost[]);
+      return blogs;
     }
   };
 
@@ -28,61 +28,51 @@ export const Blogs = (_props: Props) => {
     handleFetchDetails();
   }, []);
 
-  const handleAddButtonClick = () => {
-    setShowAddForm(!showAddForm);
-  };
-
-  const handleViewMoreClick = () => {
-    setCount(count + 3);
-  };
-  const handleCountBack = () => {
-    setCount(6);
-  };
-
   return (
     <div className={styles.allBlogs}>
       <div className={styles.header}>
         <h1>All Blogs</h1>
-        <button onClick={handleAddButtonClick}>Add</button>
+        <button
+          onClick={() => {
+            setIsModalOpen(!isModalOpen);
+            setItem({
+              id: "",
+              title: "",
+              description: "",
+              category: "",
+              dateofblog: "",
+              image: "",
+              author: "",
+              extra_images: "",
+            });
+          }}
+        >
+          Add
+        </button>
       </div>
 
       <div className={styles.blogWrapper}>
         {[...data]
           .reverse()
           .slice(0, count)
-          .map(
-            ({
-              id,
-              author,
-              dateofblog,
-              image,
-              title,
-              description,
-              category,
-            }) => {
-              return (
-                <IndividualBlogContainer
-                  id={id}
-                  image={image}
-                  title={title}
-                  author={author}
-                  description={description}
-                  dateofblog={dateofblog}
-                  category={category}
-                  editable={true}
-                />
-              );
-            }
-          )}
+          .map((item, index) => {
+            return (
+              <IndividualBlogContainer
+                item={item}
+                editable={true}
+                key={index}
+              />
+            );
+          })}
       </div>
 
       {count >= data.length ? (
-        <button onClick={handleCountBack}>Show Less</button>
+        <button onClick={() => setCount(6)}>Show Less</button>
       ) : (
-        <button onClick={handleViewMoreClick}>View More</button>
+        <button onClick={() => setCount(count + 3)}>View More</button>
       )}
 
-      {showAddForm && <Form showAddForm={showAddForm} />}
+      {isModalOpen && <Form />}
     </div>
   );
 };

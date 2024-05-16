@@ -1,14 +1,12 @@
-import { deleteBlogs, getBlogs } from "./Api";
+import { getBlogs } from "./Api";
 import styles from "./index.module.css";
 import { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
-import { FaEdit } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
 import { HeaderComponent } from "../../components/headerComponent";
+import { IndividualBlogContainer } from "./components/blogCards";
+import { CategoryDivContainer } from "./components/categoryConatiner";
 
-type Props = {};
 
-export const Blogs = (_props: Props) => {
+export const Blogs = () => {
   const [data, setData] = useState<any[]>([]);
   const [count, setCount] = useState(6);
 
@@ -34,12 +32,6 @@ export const Blogs = (_props: Props) => {
   };
   const handleCountBack = () => {
     setCount(6);
-  };
-
-  // const navigate = useNavigate();
-
-  const detailBlogs = (_id: any) => {
-    // navigate(`/detailedblog/${id}`);
   };
 
   const formatDate = (inputDate: string | number | Date) => {
@@ -87,7 +79,7 @@ export const Blogs = (_props: Props) => {
                 return (
                   <div
                     className={styles.mainblog}
-                    onClick={() => detailBlogs(id)}
+                    onClick={() => console.log(id)}
                   >
                     <img src={image} alt="" />
                     <p className={styles.author}>
@@ -119,7 +111,7 @@ export const Blogs = (_props: Props) => {
                 }) => {
                   const formattedDate = formatDate(dateofblog);
                   return (
-                    <div onClick={() => detailBlogs(id)}>
+                    <div onClick={() => console.log(id)}>
                       <img src={image} alt="" />
                       <div>
                         <p className={styles.author}>
@@ -147,25 +139,12 @@ export const Blogs = (_props: Props) => {
             .reverse()
             .slice(0, count)
             .map(
-              ({
-                id,
-                image,
-                author,
-                dateofblog,
-                title,
-                description,
-                category,
-              }) => {
+              (item, index) => {
                 return (
                   <IndividualBlogContainer
-                    id={id}
-                    image={image}
-                    title={title}
-                    author={author}
-                    description={description}
-                    dateofblog={dateofblog}
-                    category={category}
+                    item={item}
                     editable={false}
+                    key={index}
                   />
                 );
               }
@@ -177,115 +156,6 @@ export const Blogs = (_props: Props) => {
           <button onClick={handleCount}>View More</button>
         )}
       </div>
-    </div>
-  );
-};
-
-interface IndividualBlogContainerProps {
-  id: string;
-  image: string;
-  title: string;
-  author: string;
-  description: string;
-  dateofblog: string;
-  category: string;
-  editable: boolean;
-}
-
-export const IndividualBlogContainer = ({
-  id,
-  title,
-  image,
-  category,
-  dateofblog,
-  author,
-  description,
-  editable,
-}: IndividualBlogContainerProps) => {
-  // const navigate = useNavigate();
-  const detailBlogs = (id: any) => {
-    console.log(id);
-    // navigate(`/detailedblog/${id}`);
-    window.location.reload();
-  };
-
-  const formatDate = (inputDate: string | number | Date) => {
-    const options: Intl.DateTimeFormatOptions = {
-      year: "numeric",
-      month: "short",
-      day: "2-digit",
-    };
-    const formattedDate = new Date(inputDate).toLocaleDateString(
-      "en-US",
-      options
-    );
-    return formattedDate;
-  };
-  const formattedDate = formatDate(dateofblog);
-
-  const handleFetchDetails = async () => {
-    try {
-      const response = await deleteBlogs(id);
-      if (response) {
-        console.log(response);
-      }
-      window.location.reload();
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  return (
-    <div className={styles.outerIndividualBlog}>
-      {editable ? (
-        <div className={styles.editable}>
-          <button>
-            <FaEdit />
-          </button>
-          <button onClick={handleFetchDetails}>
-            <MdDelete />
-          </button>
-        </div>
-      ) : (
-        ""
-      )}
-      <div className={styles.individualBlogDiv} onClick={() => detailBlogs(id)}>
-        <img src={image} alt="" />
-        <p className={styles.author}>
-          {author} • {formattedDate}
-        </p>
-        <h3>{title}</h3>
-        <p>
-          {description.length > 200
-            ? `${description.slice(0, 200)}...`
-            : description}
-        </p>
-        <CategoryDivContainer category={category} />
-      </div>
-    </div>
-  );
-};
-
-interface CategoryDivContainerProps {
-  category: string;
-}
-export const CategoryDivContainer = ({
-  category,
-}: CategoryDivContainerProps) => {
-  return (
-    <div className={styles.categoryDiv}>
-      {category.split(",").map((cat: string) => {
-        const normalizedCat = cat.trim().replace(/\s+/g, "");
-
-        const className =
-          styles[normalizedCat.toLowerCase()] || styles.defaultCategory;
-
-        return (
-          <p className={`${styles.contentCategory} ${className}`}>
-            {cat.trim()}
-          </p>
-        );
-      })}
     </div>
   );
 };

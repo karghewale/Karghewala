@@ -1,12 +1,9 @@
 import { useState, ChangeEvent } from "react";
 import styles from "../Form.module.css";
 import { insertBlogs } from "../../api";
+import { useBlogStore } from "../../services/stores/blogStore";
 
-type Props = {
-  showAddForm: boolean;
-};
-
-export const Form = ({ showAddForm }: Props) => {
+export const Form = () => {
   const datas = [
     {
       name: "News and Updates",
@@ -22,16 +19,10 @@ export const Form = ({ showAddForm }: Props) => {
     },
   ];
   const [insertdata, setInsertData] = useState<any[]>([]);
+  const setIsModalOpen = useBlogStore((state)=>state.setIsModalOpen)
+  const item = useBlogStore((state)=>state.item)
+  const [formData, setFormData] = useState(item);
 
-  const [formData, setFormData] = useState({
-    title: "",
-    image: "",
-    author: "",
-    dateofblog: "",
-    extra_images: "",
-    description: "",
-    categories: "",
-  });
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -70,13 +61,13 @@ export const Form = ({ showAddForm }: Props) => {
 
   const handleCategoryCheckboxChange = (category: string) => {
     setFormData((prevData) => {
-      const updatedCategories = prevData.categories.includes(category)
-        ? prevData.categories
+      const updatedCategories = prevData.category.includes(category)
+        ? prevData.category
             .split(", ")
             .filter((c) => c !== category)
             .join(", ")
-        : prevData.categories
-        ? `${prevData.categories}, ${category}`
+        : prevData.category
+        ? `${prevData.category}, ${category}`
         : category;
       return {
         ...prevData,
@@ -96,7 +87,8 @@ export const Form = ({ showAddForm }: Props) => {
       extra_images: "",
       dateofblog: "",
       description: "",
-      categories: "",
+      category: "",
+      id: "",
     });
     try {
       const response = await insertBlogs(formData);
@@ -107,13 +99,11 @@ export const Form = ({ showAddForm }: Props) => {
     } catch (error) {
       console.log(error);
     }
-    showAddForm = false;
-    window.location.reload();
+    setIsModalOpen(false)
   };
 
   const handleAddButtonClick = () => {
-    showAddForm = false;
-    console.log(showAddForm);
+    setIsModalOpen(false)
   };
   return (
     <div className={styles.modalOverlay}>
@@ -194,7 +184,7 @@ export const Form = ({ showAddForm }: Props) => {
                       type="checkbox"
                       id={name}
                       value={name}
-                      checked={formData.categories.includes(name)}
+                      checked={formData.category.includes(name)}
                       onChange={() => handleCategoryCheckboxChange(name)}
                     />
                     <label htmlFor={name}>{name}</label>

@@ -20,13 +20,7 @@ const seconds = currentDateAndTime.getSeconds();
 const formattedDateAndTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
 export const getBlogs = async () => {
-  let { data: blogs, error } = await supabase.from("blogs").select("*");
-  if (error) {
-    // toast.error(error.message);
-    throw error;
-  } else {
-    return blogs;
-  }
+  
 };
 
 export const insertBlogs = async (formdata: any) => {
