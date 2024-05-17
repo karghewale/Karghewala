@@ -1,36 +1,28 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import styles from "./index.module.css";
 import fav from "/Fav.jpg";
-import { deleteTestimnonial, getTestimonial, insertTestimonials } from "../../api";
+import {
+  deleteTestimnonial,
+  getTestimonial,
+} from "../../api";
 import axios from "axios";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-type Props = {};
+import { useTestimonialStore } from "../../services/stores/testimonialStore";
+import { supabase } from "../../../../utils/supabase";
+import toast from "react-hot-toast";
 
-interface Testimonial {
-  quote: string;
-  name: string;
-  age: string;
-  month: string;
-  avgsale: string;
-  imageSrc: string;
-}
-
-export const Testimonialsdmin = (_props: Props) => {
-  const [data, setData] = useState<any[]>([]);
+export const Testimonialsdmin = () => {
+  const [data, setData] = useState<Testimonial[]>([]);
   const [showAddForm, setShowAddForm] = useState(false);
-  const [formData, setFormData] = useState<Testimonial>({
-    quote: "",
-    name: "",
-    age: "",
-    month: "",
-    avgsale: "",
-    imageSrc: "",
-  });
-
+  const item = useTestimonialStore((state) => state.item);
+  const setItem = useTestimonialStore((state) => state.setItem);
+  const [formData, setFormData] = useState<Testimonial>(item);
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [savedFiles, setSavedFiles] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [refresh, setRefresh] = useState(false);
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
@@ -47,7 +39,7 @@ export const Testimonialsdmin = (_props: Props) => {
       }
     };
     fetchDetails();
-  }, []);
+  }, [refresh]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -66,16 +58,49 @@ export const Testimonialsdmin = (_props: Props) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      const response = await insertTestimonials(formData);
-      if (response) {
-        console.log(response);
-        window.location.reload();
+    const user = await supabase.auth.getSession();
+    if (isEditing) {
+      const { data, error } = await supabase
+        .from("testimonial")
+        .update({
+          ...formData,
+          created_by: user?.data?.session?.user.id,
+          imageSrc: savedFiles,
+        })
+        .eq("id", formData.id)
+        .select();
+      if (error) {
+        toast.error(error.message);
+        throw error;
+      } else {
+        setRefresh(!refresh);
+        setShowAddForm(false);
+        return data;
       }
-    } catch (error) {
-      console.error(error);
+    } else {
+      const adjustedData = {
+        quote: formData.quote,
+        name: formData.name,
+        age: formData.age,
+        month: formData.month,
+        avgsale: formData.avgsale,
+        imageSrc: savedFiles,
+        created_by: user?.data?.session?.user.id,
+      };
+      console.log(adjustedData);
+      const { data: testimonial, error } = await supabase
+        .from("testimonial")
+        .insert([adjustedData])
+        .select();
+      if (error) {
+        toast.error(error.message);
+        throw error;
+      } else {
+        setRefresh(!refresh);
+        setShowAddForm(false);
+        return testimonial;
+      }
     }
-    setShowAddForm(false);
   };
 
   const handleUpload = async () => {
@@ -117,24 +142,58 @@ export const Testimonialsdmin = (_props: Props) => {
     }
   };
 
-    const handleDelete = async (value: any) => {
-      try {
-        await deleteTestimnonial(value);
-        const updatedData = data.filter((item) => item.id !== value);
-        setData(updatedData);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  const handleDelete = async (value: any) => {
+    try {
+      await deleteTestimnonial(value);
+      setRefresh(!refresh);
+      const updatedData = data.filter((item) => item.id !== value);
+      setData(updatedData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className={styles.Wrapper}>
-      <button onClick={() => setShowAddForm(true)}>Add Testimonial</button>
+      <button
+        onClick={() => {
+          setItem({
+            id: "",
+            quote: "",
+            name: "",
+            age: "",
+            month: "",
+            avgsale: "",
+            imageSrc: "",
+          });
+          setFormData({
+            id: "",
+            quote: "",
+            name: "",
+            age: "",
+            month: "",
+            avgsale: "",
+            imageSrc: "",
+          });
+          setSavedFiles("");
+          setIsEditing(false);
+          setShowAddForm(true);
+        }}
+      >
+        Add Testimonial
+      </button>
       <h2>TESTIMONIALS</h2>
       <div className={styles.swiper}>
         {data.map((testimonial, index) => (
           <div key={index} className={styles.swiperSlider}>
             <div className={styles.actionbtn}>
-              <button>
+              <button
+                onClick={() => {
+                  setFormData(testimonial);
+                  setItem(testimonial);
+                  setIsEditing(true);
+                  setShowAddForm(true);
+                }}
+              >
                 <FaEdit />
               </button>
               <button onClick={() => handleDelete(testimonial.id)}>
@@ -193,16 +252,31 @@ export const Testimonialsdmin = (_props: Props) => {
                     </div>
                   </label>
                 ) : (
-                  <label key={key}>
-                    {key.charAt(0).toUpperCase() + key.slice(1)}:
-                    <input
-                      type="text"
-                      name={key}
-                      value={value}
-                      onChange={handleInputChange}
-                    />
-                  </label>
+                  key !== "id" &&
+                  key !== "created_by" &&
+                  key !== "created_at" && (
+                    <label key={key}>
+                      {key.charAt(0).toUpperCase() + key.slice(1)}:
+                      <input
+                        type="text"
+                        name={key}
+                        value={value}
+                        onChange={handleInputChange}
+                      />
+                    </label>
+                  )
                 )
+              )}
+              {isEditing && (
+                <label key="images">
+                  Images:
+                  <input
+                    type="text"
+                    name="images"
+                    value={formData.imageSrc}
+                    onChange={(e) => setSavedFiles(e.target.value)}
+                  />
+                </label>
               )}
               <button type="submit">Submit</button>
             </form>

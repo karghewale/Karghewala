@@ -74,32 +74,6 @@ export const getTestimonial = async () => {
   }
 };
 
-export const insertTestimonials = async (formdata: any) => {
-    await fetchUserData();
-  const adjustedData = {
-    quote: formdata.quote,
-    created_at: formattedDateAndTime,
-    name: formdata.name,
-    age: formdata.age,
-    month: formdata.month,
-    avgsale: formdata.avgsale,
-    imageSrc: formdata.imageSrc,
-    created_by: users,
-  };
-  console.log(adjustedData);
-  const { data: testimonial, error } = await supabase
-    .from("testimonial")
-    .insert([adjustedData])
-    .select();
-
-  if (error) {
-    // Handle the error
-    throw error;
-  } else {
-    return testimonial;
-  }
-};
-
 export const deleteTestimnonial = async (formdata: any) => {
   let { data: testimonial, error } = await supabase
     .from("testimonial")
