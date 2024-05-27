@@ -2,10 +2,9 @@ import { useEffect } from "react";
 import styles from "./index.module.css";
 import { ArrowRight } from "../../../../assets/svg";
 import videos from './Karuka-home-with-logo-white-bg.webp'
-type Props = {};
+import data from '../../../../data/home.json'
 
-
-export const Landing = (_props: Props) => {
+export const Landing = () => {
   useEffect(() => {
     // Your DOM manipulation code here
     consoleText(
@@ -69,7 +68,7 @@ export const Landing = (_props: Props) => {
     <div className={styles.Wrapper}>
       <div>
         <div>
-          <h1>The Story Of </h1>
+          <h1>{data.landing.title}</h1>
           <h1 className={styles.consoleContainer}>
             <span id="text"></span>
             <div className={styles.consoleUnderscore} id="console">
@@ -78,17 +77,12 @@ export const Landing = (_props: Props) => {
           </h1>
         </div>
         <p>
-          This talented community of young and aspiring weaver entrepreneurs, so
-          that they can{" "}
-          <span className="colorText">build robust businesses</span>. What
-          differentiates us is the belief that{" "}
+          {data.landing.description[1]}{" "}
+          <span className="colorText">{data.landing.description[2]}</span>{data.landing.description[3]}{" "}
           <span className="colorText">
-            weavers are equal partners in the business
+            {data.landing.description[4]}
           </span>
-          , not mere wage workers who will weave the said design and be paid per
-          meter wages. We believe in the agency of artisans to transcend
-          impediments in traditional value chains to co-create, manage business,
-          and sell the final products directly to the end consumer.
+          {data.landing.description[5]}
         </p>
         <button>
           EXPLORE WEBSITE <ArrowRight />
