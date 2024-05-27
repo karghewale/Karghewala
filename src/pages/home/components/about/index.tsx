@@ -1,40 +1,25 @@
 import styles from "./index.module.css";
 import component from "/assets/sidePlacedComponent.png";
-import gif from './gifset.png'
+import gif from "./gifset.png";
 import gif2 from "./gif2.png";
-type Props = {};
+import data from "../../../../data/home.json";
 
-export const About = (_props: Props) => {
+export const About = () => {
   return (
     <div className={styles.Wrapper} id="about">
       <div>
-        <h2>THE PROBLEM</h2>
-        <p>
-          The status of the weaver as an artisan who has complete creative
-          control of their work is relegated to that of a hand-worker, one who
-          simply executes a predefined set of instructions that are relayed to
-          them.
-        </p>
+        <h2>{data.about[0].title}</h2>
+        <p>{data.about[0].description}</p>
       </div>
       <div>
-        <h2>The Cause</h2>
-        <p>
-          The handmade manufacturing model unintentionally ended up creating a
-          separation of concept and design from execution that severely curtails
-          the creative agency of weaver artisans.
-        </p>
+        <h2>{data.about[1].title}</h2>
+        <p>{data.about[1].description}</p>
       </div>{" "}
       <img className={styles.gif} src={gif} alt="" />
       <img className={styles.gif2} src={gif2} alt="" />
       <div>
-        <h2>The SOLUTION</h2>
-        <p>
-          A six-month free training program focusing on developing their skills
-          as creative entrepreneurs followed by a 3-year incubation period. Our
-          goal is to assist artisans by establishing market connections and
-          giving them rightful credit for their unique designs, helping them
-          establish their own distinct design and brand identity.
-        </p>
+        <h2>{data.about[2].title}</h2>
+        <p>{data.about[2].description}</p>
       </div>
       <img className={styles.component} src={component} alt="" />
     </div>
