@@ -1,21 +1,17 @@
 import styles from './index.module.css'
 import image from './image.png'
-type Props = {}
+import data from '../../../../data/training.json'
 
-export const Landing = (_props: Props) => {
+export const Landing = () => {
   return (
     <div className={styles.Wrapper}>
       <div className={styles.Content}>
         <div>
-          <h3>Welcome to</h3>
-          <h2>Karghewale Karuka Foundation's Artisan Training Program</h2>
+          <h3>{data.landing.title["1"]}</h3>
+          <h2>{data.landing.title["2"]}</h2>
         </div>
         <p>
-          At Karghewale Karuka Foundation, we are committed to empowering
-          artisans to thrive in today's competitive market by providing
-          comprehensive training and support. Our training program is designed
-          to nurture the creative talents of artisans and equip them with the
-          necessary skills to succeed as entrepreneurs.
+          {data.landing.description}
         </p>
         <button>Apply For Program</button>
       </div>

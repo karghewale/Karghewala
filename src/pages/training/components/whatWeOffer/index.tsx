@@ -9,25 +9,24 @@ import {
 } from "./assets/svg";
 import styles from "./index.module.css";
 import graph from "./assets/graph.png";
+import data1 from "../../../../data/training.json";
 
-type Props = {};
-
-export const WhatWeOffer = (_props: Props) => {
+export const WhatWeOffer = () => {
   const data = [
     {
       icon: <SixMonth />,
-      title: "Six-Month Free Training Program",
-      para: "Our immersive training program spans six months & focuses on honing your skills as a creative entrepreneur. Led by industry experts, you will receive personalized guidance and hands-on experience to elevate your craft to new heights.",
+      title: data1.whatweoffer.programs[0].title,
+      para: data1.whatweoffer.programs[0].description,
     },
     {
       icon: <TandM />,
-      title: "Tailored Design & Management Courses",
-      para: "Choose from a range of design and management courses tailored to your specific needs and interests. Our flexible curriculum allows you to customize your learning experience & focus on areas that will benefit your creative journey the most.",
+      title: data1.whatweoffer.programs[1].title,
+      para: data1.whatweoffer.programs[1].description,
     },
     {
       icon: <ThreeYr />,
-      title: "Three-Year Incubation Period",
-      para: "Following the training program, artisans have the opportunity to participate in our three-year incubation period. During this time, we provide ongoing mentorship, networking opportunities, and access to resources to help you launch & grow your business successfully.",
+      title: data1.whatweoffer.programs[2].title,
+      para: data1.whatweoffer.programs[2].description,
     },
   ];
   // const dataset = [
