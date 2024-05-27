@@ -1,0 +1,35 @@
+{
+  "landing": {
+    "title": "OUR STORY",
+    "description": {
+      "1": "A ",
+      "2": "coming-of-age",
+      "3": " story, where our weaver artisans dream of overcoming neatly stacked odds to realize their potential as",
+      "4": " proud ambassadors",
+      "5": " of the Indian handloom weaving tradition :)"
+    },
+    "context": {
+      "title": "THE CONTEXT",
+      "description": {
+        "1": "From an intimately known market to middle-layer driven value chains, the design agency shifted from artisans totally to the added layers, making artisans mere implementation centres. The middle-layer driven value chains continue to exist and thrive today. Here, the weaver artisans are having to trade their labour to produce textiles, without much creative agency in the process, links their earnings to their labour, not so much their skill.",
+        "2": "Even in fair trade, labour wages are more likely to be subsistence, than attractive; leading to the younger generation of weavers leaving the craft to try their fortunes at more fashionable vocations. A story of severely curtailed creative agency of artisans brought on by a sheer predominance of handmade manufacturing-based interventions."
+      }
+    }
+  },
+  "missionVision": {
+    "mission": {
+      "title": "MISSION",
+      "description": {
+        "1": "Our mission is to empower the creators of our textiles. This talented community of young and aspiring weaver entrepreneurs, so that they can",
+        "2": "build robust businesses",
+        "3": ". What differentiates us is the belief that",
+        "4": "weavers are equal partners in the business",
+        "5": ", not mere wage workers who will weave the said design and be paid per meter wages. We believe in the agency of artisans to transcend impediments in traditional value chains to co-create, manage business, and sell the final products directly to the end consumer."
+      }
+    },
+    "vision": {
+      "title": "VISION",
+      "description": "Karghewale’s vision is to create an enabling creative crafts ecosystem wherein any artisan with entrepreneurial dreams finds all the resources at her disposal to make her transition from a wage worker to an artisan entrepreneur. This is how Karghewale envisions its impact at scale."
+    }
+  }
+}

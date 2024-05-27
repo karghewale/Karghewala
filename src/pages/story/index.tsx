@@ -3,10 +3,7 @@ import { MissionVission } from "./components/missionVision"
 import { QuickLinks } from "./components/quicklinks"
 import { Team } from "./components/team"
 
-
-type Props = {}
-
-export const Story = (_props: Props) => {
+export const Story = () => {
   return (
     <div>
       <Landing />
