@@ -70,7 +70,7 @@ export const Login = () => {
       <div className={styles.headers}>
         <h2>Hello Again!</h2>
         <h3>
-          Welcome back to Opengrad - Admin,<br></br> login to continue
+          Welcome back to Karghewala - Admin,<br></br> login to continue
         </h3>
       </div>
       <div className={styles.InputContainerWrapper}>

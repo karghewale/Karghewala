@@ -23,10 +23,10 @@ export const Dashboard = (_props: Props) => {
       name: "Testimonials",
       value: "Testimonials",
     },
-    {
-      name: "Join Us - VolunteerDirectory",
-      value: "VolunteerDirectory",
-    },
+    // {
+    //   name: "Join Us - VolunteerDirectory",
+    //   value: "VolunteerDirectory",
+    // },
   ];
   return (
     <div className={styles.AdminDashboard}>

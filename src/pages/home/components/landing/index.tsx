@@ -8,15 +8,13 @@ export const Landing = () => {
   useEffect(() => {
     // Your DOM manipulation code here
     consoleText(
-      [
-        "A curtailed agency",
-        "Awakening a generation",
-        "Reviving a craft culture",
-      ],
+     data.landing.consoletxt,
       "text",
       ["#FDB5C0", "#FDB5C0", "#FDB5C0"]
     );
   }, []); 
+
+  console.log(data.landing.consoletxt)
 
   function consoleText(words: string[], id: string, colors?: string[]): void {
     if (colors === undefined) colors = ["#fff"];

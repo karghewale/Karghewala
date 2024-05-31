@@ -26,10 +26,10 @@ export const Footer = (_props: Props) => {
         <div>
           <h3>Company</h3>
           <div>
-            <a href="">Our Story</a>
-            <a href="">Contact Us</a>
-            <a href="">Gallery</a>
-            <a href="">Training</a>
+            <a href="/story">Our Story</a>
+            <a href="/contact">Contact Us</a>
+            <a href="/gallery">Gallery</a>
+            <a href="/training">Training</a>
           </div>
         </div>
         <div>
@@ -53,7 +53,7 @@ export const Footer = (_props: Props) => {
             </div>
             <div>
               <MailSvg />
-              <p>contact@karghewale.com</p>
+              <a href="mailto:contact@karghewale.com">contact@karghewale.com</a>
             </div>
             <div>
               <LocationSvg />
